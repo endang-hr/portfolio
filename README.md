@@ -1,85 +1,65 @@
-# 🌐 Web Portofolio Muhamad Endang
+# 🌌 Interactive 3D Spatial Portfolio - Muhamad Endang
 
-> Portofolio web profesional & interaktif yang dibangun menggunakan **Tailwind CSS v3**, **Vite**, dan **HTML/JavaScript**.
-
-[![Live Demo](https://img.shields.io/badge/Demo-Online%20Website-success?style=for-the-badge&logo=google-chrome)](https://endang-hr.github.io/portfolio/)
-[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://endang-hr.github.io/portfolio/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-v8.3-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
-
----
-
-## 🔗 Akses Website Online
-
-Website dapat langsung dibuka melalui tautan berikut:  
-👉 **[https://endang-hr.github.io/portfolio/](https://endang-hr.github.io/portfolio/)**
-
----
-
-## 👨‍💻 Profil Singkat
-
-* **Nama**: Muhamad Endang
-* **Pendidikan**: Mahasiswa S1 Sistem Informasi (Semester 5), Universitas Pamulang (UNPAM)
-* **Kelas**: 05SISE005
-* **Pekerjaan**: IT Support di PT CBA Chemical Industry
-* **Domisili**: Jawilan, Serang, Banten
-* **GitHub**: [@endang-hr](https://github.com/endang-hr)
-* **LinkedIn**: [Muhamad Endang](https://www.linkedin.com/in/muhamad-endang/)
+Website portofolio interaktif 3D spatial flythrough modern yang dibangun dengan arsitektur WebGL/Three.js performa tinggi, custom GLSL shaders, dan tipografi elegan terinspirasi dari [dizzoporto.vercel.app](https://dizzoporto.vercel.app/).
 
 ---
 
 ## ✨ Fitur Utama
 
-- 📱 **Fully Responsive Layout**: Tampilan optimal di berbagai ukuran layar (smartphone, tablet, maupun desktop).
-- 🌓 **Dark & Light Mode**: Dukungan pergantian tema gelap dan terang dengan penyimpanan preferensi pengguna di `localStorage`.
-- 🛠️ **Showcase Keahlian & Portofolio**: Menampilkan rangkuman keterampilan teknis (Web Development, Database, Networking, Hardware) dan proyek-proyek unggulan.
-- 📬 **Form Kontak Interaktif**: Formulir pengiriman pesan langsung dari pengunjung.
-- ⚡ **Super Cepat**: Dibangun dengan Vite bundler dan utilitas Tailwind CSS yang ringan.
-- 🚀 **Automated CI/CD**: Terintegrasi dengan GitHub Actions untuk build dan deploy otomatis ke GitHub Pages setiap ada commit baru.
+1. **3D Particle Point-Cloud & Deep-Space Vortex**:
+   - 2.400 partikel (*instanced meshes*) dengan custom vertex & fragment shader yang membentuk siluet portrait 3D di awal (*hero section*).
+   - Saat digulir (*scroll*), 2.400 partikel bertransformasi (*morphing*) menjadi lorong galaksi 3D (*infinite cylinder vortex*) sepanjang 228 unit sumbu Z.
+2. **Illuminated Calligraphy Signature**:
+   - Kurva spline 3D (*CatmullRom Curve & TubeGeometry*) dengan efek *glow* custom shader neon cyan-putih (`#38BDF8` & `#FFFFFF`).
+3. **17 Kartu Proyek 3D Interaktif**:
+   - 17 proyek terdistribusi sepanjang jalur penerbangan kamera di ruang 3D.
+   - Dilengkapi *dynamic canvas texture*, border neon bercahaya (*luminous rim*), pantulan kaca diagonal (*glass sheen*), dan rotasi *tilt* interaktif mengikuti kursor mouse.
+4. **Smooth Inertial Scrolling**:
+   - Didukung oleh **Lenis** untuk pergerakan gulir kamera yang halus dan sinematik.
+5. **Modals & Drawers Interaktif**:
+   - **About & Awards Modal**: 4 tab lengkap (*Biography*, *Experience & Education*, *Awards* dengan link sertifikat, dan *Tech Stack*).
+   - **Project Detail View**: Menampilkan metrik, tantangan arsitektur, daftar deliverables, teknologi, dan tombol *Live Demo*.
+   - **Contact Modal**: Tindakan cepat salin email dan tautan LinkedIn, GitHub, serta Instagram.
 
 ---
 
-## 💻 Menjalankan Secara Lokal
+## 🛠️ Menjalankan Proyek Secara Lokal
 
-Untuk menjalankan project ini di komputer lokal:
+```bash
+# Masuk ke direktori
+cd portofolio.endang
 
-1. **Clone repositori**:
-   ```bash
-   git clone https://github.com/endang-hr/portfolio.git
-   cd portfolio
-   ```
+# Instal dependensi (jika belum)
+npm install
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Jalankan server pengembangan**:
-   ```bash
-   npm run dev
-   ```
-   Buka `http://localhost:5173` di browser Anda.
-
-4. **Build untuk produksi**:
-   ```bash
-   npm run build
-   ```
-
----
-
-## 📂 Struktur Project
-
-```text
-├── .github/workflows/   # Konfigurasi CI/CD GitHub Actions
-├── assets/images/       # Asset gambar lokal
-├── public/              # File statis publik (favicon, ikon, dll)
-├── src/                 # File script & CSS utama
-├── index.html           # Struktur utama halaman web
-├── package.json         # Konfigurasi dependensi project
-├── tailwind.config.js   # Konfigurasi Tailwind CSS
-└── vite.config.js       # Konfigurasi Vite & path relatif
+# Jalankan development server
+npm run dev
 ```
 
+Buka browser Anda di: `http://localhost:3000`
+
 ---
 
-&copy; 2026 **Muhamad Endang** — Tugas Mata Kuliah Pemrograman Web 1.
+## 🚀 Build untuk Produksi & Deployment
+
+```bash
+# Build bundle produksi
+npm run build
+```
+
+Hasil build akan tersimpan di folder `dist/`. Anda dapat langsung men-deploy folder ini ke platform seperti:
+- **Vercel** (`vercel deploy`)
+- **Netlify** (`netlify deploy`)
+- **GitHub Pages**
+- **Cloudflare Pages**
+
+---
+
+## 📝 Mengubah Data & Foto Profil
+
+- Seluruh data teks, riwayat karir, sertifikat, dan 17 proyek dapat diubah di:  
+  [src/data/portfolioData.js](file:///Users/muhamadendang/Documents/portofolio.endang/src/data/portfolioData.js)
+- Foto portrait 3D dapat diganti di:  
+  `public/portrait.jpg`
+- Foto profil avatar dapat diganti di:  
+  `public/images/profile.webp`

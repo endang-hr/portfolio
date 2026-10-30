@@ -1,0 +1,1067 @@
+{
+  "A2": {
+    "work": [
+      {
+        "role": "IT Apprentice - MagangHub",
+        "company": "PT Indah Kiat Pulp & Paper Tbk",
+        "location": "Serang, Banten",
+        "period": "Aug 2026 - Present",
+        "points": [
+          "Developing enterprise web applications using C# programming language.",
+          "Collaborating with the core IT team to provide technical troubleshooting and resolve system issues efficiently."
+        ]
+      },
+      {
+        "role": "Product Developer",
+        "company": "NutriAI",
+        "location": "Remote",
+        "period": "Jun 2026 - Aug 2026",
+        "points": [
+          "Conducted a comprehensive UI/UX redesign of the existing platform and successfully translated new concepts into responsive frontend code using React and Tailwind CSS.",
+          "Overhauled user interaction flows to optimize usability and visual consistency across all AI-based features."
+        ]
+      },
+      {
+        "role": "Internship",
+        "company": "DISKOMINFO Sragen",
+        "location": "Kabupaten Sragen",
+        "period": "Feb - Apr 2025",
+        "points": [
+          "Conceptualized and designed the user interface (UI) of the official government website from scratch, establishing a clean visual hierarchy.",
+          "Produced high-quality visual brand assets (lanyards, logos, certificates) aligned with organizational branding standards.",
+          "Assisted in website maintenance by troubleshooting errors and ensuring stable system performance."
+        ]
+      },
+      {
+        "role": "Independent Study - MSIB Batch 7",
+        "company": "PT Lingkaran Edukasi Kreatif",
+        "location": "Remote",
+        "period": "Sep - Dec 2024",
+        "points": [
+          "Led the team through the end-to-end design thinking process from research to interactive prototyping.",
+          "Conducted user interviews, competitor analysis, personas, journey maps, and high-fidelity interactive prototypes in Figma."
+        ]
+      },
+      {
+        "role": "Field Work Practice",
+        "company": "AMIK Serang",
+        "location": "Serang",
+        "period": "Mar - Jun 2021",
+        "points": [
+          "Developed visual marketing assets (posters, pamphlets, Instagram feeds) to increase institutional visibility.",
+          "Ran email outreach campaigns targeting high schools in Serang, Banten."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Informatics Engineering",
+        "institution": "Universitas Muhammadiyah Surakarta",
+        "location": "Surakarta",
+        "period": "Oct 2022 - Jun 2026",
+        "gpa": "3.53 / 4.00",
+        "details": "Final Project: Machine Learning-Based Health Prediction and Integrated Nutrition Education Website with AI Chatbot."
+      },
+      {
+        "degree": "Vocational High School - Software Engineering",
+        "institution": "SMK Negeri 1 Kragilan",
+        "location": "Serang, Banten",
+        "period": "Jul 2019 - Jun 2022",
+        "gpa": "86 / 100 (Best Graduate)",
+        "details": "Ranked first with highest academic score across the Software Engineering cohort."
+      }
+    ],
+    "organization": [
+      {
+        "role": "Head of Division UI/UX",
+        "organization": "UKM Forum Open Source Teknik Informatika (FOSTI) UMS",
+        "location": "Surakarta, Indonesia",
+        "period": "Dec 2023 - Dec 2024",
+        "points": [
+          "Coordinated faculty-level design programs, authored comprehensive UI/UX modules, and mentored students in the FOSTI Class program."
+        ]
+      },
+      {
+        "role": "Staff of Division UI/UX",
+        "organization": "UKM FOSTI UMS",
+        "location": "Surakarta, Indonesia",
+        "period": "Dec 2022 - Dec 2023",
+        "points": [
+          "Contributed to student development workshops and community tech events."
+        ]
+      }
+    ]
+  },
+  "B0": 9.5,
+  "I_": [
+    {
+      "id": "wice-2025-w2w",
+      "title": "Gold Medal & Grand Prize - W2W App",
+      "event": "World Invention Competition and Exhibition (WICE) 2025",
+      "description": "Secured Gold Medal & Special Award for the Grand Prize. Developed the W2W child development and nutrition monitoring app, and designed the UI/UX prototype and product packaging.",
+      "badge": "🏆 Grand Prize & Gold",
+      "certificateUrl": "https://drive.google.com/file/d/146Kp71v2XZTLDXZxwJ0WnLhyNveUl0M8/view?usp=drive_link"
+    },
+    {
+      "id": "ipitex-2026-geasy",
+      "title": "Gold Medal - Geasy",
+      "event": "Bangkok International IPITEX 2026 (Thailand)",
+      "description": "Won Gold Medal for Geasy: AI Smart Sustainable Nutrition 4-in-1 ICT Ecosystem. Developed system, UI/UX, and AI integrations including an AI nutrition chatbot and camera-based food analysis.",
+      "badge": "🥇 Gold Medal",
+      "certificateUrl": "https://drive.google.com/file/d/1tDBMbmFFkUnlvQOF6QhLi8PrAfRVMcRD/view?usp=sharing"
+    },
+    {
+      "id": "wyie-2026-geasy2",
+      "title": "Silver Medal - Geasy 2.0",
+      "event": "World Young Inventors Exhibition (WYIE) 2026 (Malaysia)",
+      "description": "Awarded Silver Medal for Geasy 2.0: AI Smart Sustainable Nutrition 5-in-1 ICT Ecosystem. Independently developed full product from scratch (system development, AI integration, and UI/UX design).",
+      "badge": "🥈 Silver Medal",
+      "certificateUrl": "https://drive.google.com/file/d/1a--EIZUwUrUsoDf-0635Op2Ti3OqDgxz/view?usp=sharing"
+    },
+    {
+      "id": "gyic-2025-w2w",
+      "title": "Gold Medal & Best Presentation - W2W App",
+      "event": "Global Youth Innovators Competition (GYIC) 2025",
+      "description": "Won Gold Medal & Special Award for Best Presentation. Designed the prototype interface and product packaging for W2W (Waste to Wellness) to support child growth monitoring.",
+      "badge": "🥇 Gold & Best Presentation",
+      "certificateUrl": "https://drive.google.com/file/d/1_PZRyb-wyY39qXqnWBj-kztKMfCXS8qs/view?usp=drive_link"
+    },
+    {
+      "id": "wyiia-2025-nutreasy",
+      "title": "Gold Medal - Nutreasy",
+      "event": "World Youth Invention and Innovation Award (WYIIA) 2025",
+      "description": "Awarded Gold Medal as Team Leader. Directed product concept, UI/UX design, and functional prototype for Nutreasy: An Integrated 4-in-1 Platform for Smart Nutrition and Sustainable Living.",
+      "badge": "🥇 Gold Medal",
+      "certificateUrl": "https://drive.google.com/file/d/1_TXcsd00k-JMyfqzIpSNXH_00o8ADL8x/view?usp=drive_link"
+    },
+    {
+      "id": "iyc-2025-nutreasy",
+      "title": "Gold Medal - Nutreasy App",
+      "event": "International Youthpreneurship Competition (IYC) 2025",
+      "description": "Awarded Gold Medal as a core team member. Built the entire interactive application prototype for Nutreasy App, enhancing product features based on feedback from judges and mentors.",
+      "badge": "🥇 Gold Medal",
+      "certificateUrl": "https://drive.google.com/file/d/1K5b5xZR3CuRnNHxyTKlXHfxh2pviH725/view?usp=drive_link"
+    },
+    {
+      "id": "gyic-2024-stuntapp",
+      "title": "Gold Medal - Stunt App",
+      "event": "Global Youth Innovators Competition (GYIC) 2024",
+      "description": "Won Gold Medal in first international competition. Served as core member responsible for designing the entire prototype interface of Stunt App to address child stunting prevention.",
+      "badge": "🥇 Gold Medal",
+      "certificateUrl": "https://drive.google.com/file/d/1lUIakb49uEpueVHqW3amW3VRWLRWt91X/view?usp=sharing"
+    },
+    {
+      "id": "iefba-2025-nutrios",
+      "title": "3rd Place Winner - NutriOs",
+      "event": "International Business Plan Competition (IEFBA) 2025",
+      "description": "Won 3rd Place (College Category) for NutriOs. Refined UI/UX, strengthened rebranding direction, and designed a high-fidelity prototype focused on business model alignment and commercialization.",
+      "badge": "🥉 3rd Place Winner",
+      "certificateUrl": "https://drive.google.com/file/d/1y0MZWw1uItwcccTK_xZHkniAWSBmQPdu/view?usp=drive_link"
+    },
+    {
+      "id": "odama-2023-webflow",
+      "title": "3rd Place Winner - Webflow Landing Page",
+      "event": "Workshop HIMATIF FOSTI UMS x ODAMA Studio 2023",
+      "description": "Won 3rd Place in a landing page design challenge. Designed a creative Webflow company profile landing page for a café under the theme \"Building an Immersive Creative Website From Scratch\".",
+      "badge": "🥉 3rd Place Winner",
+      "certificateUrl": "https://drive.google.com/file/d/1Ui7QFTjzHhZ6zahznHcoDYxWMDoI77-1/view?usp=drive_link"
+    },
+    {
+      "id": "smkn1-2022-best-graduate",
+      "title": "Best Graduate (Highest Grades Student)",
+      "event": "Rekayasa Perangkat Lunak (SMKN 1 Kragilan, 2022)",
+      "description": "Ranked first with the highest academic scores in the entire batch of the Software Engineering expertise competency.",
+      "badge": "🎓 Best Graduate",
+      "certificateUrl": "https://drive.google.com/file/d/PASTE_YOUR_CERTIFICATE_LINK_HERE/view"
+    }
+  ],
+  "_G": [
+    {
+      "id": "pesan-air",
+      "indexNumber": 1,
+      "formattedIndex": "001",
+      "workArchiveNumber": 1,
+      "title": "Pesan Air",
+      "category": "B2B/B2C Web Application & Glassmorphism Platform",
+      "year": "2026",
+      "client": "PesanAir Platform",
+      "role": "Full-Stack & UI/UX Developer",
+      "zPosition": -12,
+      "offsetX": 0,
+      "offsetY": 0.04,
+      "accentColor": "#00F0FF",
+      "secondaryColor": "#3B82F6",
+      "bgDark": "#041017",
+      "mediaUrl": "/images/pesanair.webp",
+      "tags": [
+        "React",
+        "Firebase",
+        "Glassmorphism",
+        "Multi-Language"
+      ],
+      "summary": "PesanAir is a modern B2B/B2C web application designed to streamline the delivery of gallon and packaged drinking water. It features a robust multi-role system that seamlessly connects end consumers with verified local depots.",
+      "challenge": "Customers can easily browse products, select nearby depots, and track orders in real time, while resellers utilize a dedicated dashboard to manage inventory and process requests through an asymmetric bento-grid layout with multi-language support (English, Indonesian, Mandarin).",
+      "deliverables": [
+        "Web Application",
+        "Bento UI System",
+        "Depot Management",
+        "Order Tracking"
+      ],
+      "metrics": [
+        {
+          "label": "Realtime Sync",
+          "value": "<200ms"
+        },
+        {
+          "label": "Locales",
+          "value": "3 Lang"
+        },
+        {
+          "label": "Platform",
+          "value": "React"
+        }
+      ],
+      "liveUrl": "https://pesanair-app.web.app/"
+    },
+    {
+      "id": "catat-bulanan",
+      "indexNumber": 2,
+      "formattedIndex": "002",
+      "workArchiveNumber": 2,
+      "title": "Catat Bulanan",
+      "category": "Voice-Powered FinTech & Analytics Dashboard",
+      "year": "2026",
+      "client": "Catat Bulanan App",
+      "role": "Lead Frontend & Voice AI Integration",
+      "zPosition": -24,
+      "offsetX": -0.32,
+      "offsetY": -0.06,
+      "accentColor": "#10B981",
+      "secondaryColor": "#059669",
+      "bgDark": "#04140E",
+      "mediaUrl": "/images/Catat Bulanan.webp",
+      "tags": [
+        "React",
+        "Supabase",
+        "Web Speech API",
+        "Analytics"
+      ],
+      "summary": "A voice-powered personal expense tracking web app that allows users to record daily spending simply by speaking aloud in natural Indonesian speech, parsing item names, amounts, and categories automatically.",
+      "challenge": "Provides a comprehensive analytics dashboard with interactive charts, budget thresholds, and full transaction history management—all secured with per-user authentication and cloud-synced via Supabase.",
+      "deliverables": [
+        "Voice Parsing",
+        "Expense Charts",
+        "Budget Monitoring",
+        "Cloud Auth"
+      ],
+      "metrics": [
+        {
+          "label": "Input Speed",
+          "value": "3x Faster"
+        },
+        {
+          "label": "Speech Engine",
+          "value": "WebSpeech"
+        },
+        {
+          "label": "Database",
+          "value": "Supabase"
+        }
+      ],
+      "liveUrl": "https://catatpengeluarankita.netlify.app/"
+    },
+    {
+      "id": "maintenance-app",
+      "indexNumber": 3,
+      "formattedIndex": "003",
+      "workArchiveNumber": 3,
+      "title": "Maintenance APP",
+      "category": "Industrial CMMS & Equipment Telemetry",
+      "year": "2026",
+      "client": "Industrial Operations",
+      "role": "Mobile & Cloud Architecture",
+      "zPosition": -36,
+      "offsetX": 0.35,
+      "offsetY": 0.08,
+      "accentColor": "#F59E0B",
+      "secondaryColor": "#D97706",
+      "bgDark": "#140F06",
+      "mediaUrl": "/images/MaintenanceAPP.webp",
+      "tags": [
+        "Flutter",
+        "Supabase",
+        "CMMS",
+        "Industrial IoT"
+      ],
+      "summary": "MaintenanceApp is a Computerized Maintenance Management System (CMMS) designed to streamline industrial equipment maintenance operations, machinery health telemetry, and breakdown prevention.",
+      "challenge": "Enables engineering teams to track machine health, schedule preventive maintenance routines, log service activities, and receive real-time incident notifications across industrial factory floors.",
+      "deliverables": [
+        "Flutter Mobile",
+        "Preventive Scheduler",
+        "Incident Logging",
+        "Real-time Alerts"
+      ],
+      "metrics": [
+        {
+          "label": "Downtime Cut",
+          "value": "-35%"
+        },
+        {
+          "label": "Platform",
+          "value": "Flutter"
+        },
+        {
+          "label": "Backend",
+          "value": "Supabase"
+        }
+      ],
+      "liveUrl": "https://maintenanceapp.netlify.app/"
+    },
+    {
+      "id": "barada-rw02",
+      "indexNumber": 4,
+      "formattedIndex": "004",
+      "workArchiveNumber": 4,
+      "title": "Barada RW 02",
+      "category": "Civic Tech & Public Services Portal",
+      "year": "2025",
+      "client": "RW 02 Community",
+      "role": "Frontend Developer & UI Designer",
+      "zPosition": -48,
+      "offsetX": -0.28,
+      "offsetY": 0.03,
+      "accentColor": "#3B82F6",
+      "secondaryColor": "#60A5FA",
+      "bgDark": "#060F1A",
+      "mediaUrl": "/images/Barada.webp",
+      "tags": [
+        "React",
+        "Framer Motion",
+        "Tailwind CSS",
+        "Supabase"
+      ],
+      "summary": "A digital civic environmental information system designed to streamline administration, manage organizational members, and deliver public citizen services for RW 02.",
+      "challenge": "Features integrated Community News, Event Schedules, Photographic Documentation, Citizen Feedback, Local SME Promotion, and an Emergency Public Hotline inside a clean, accessible interface.",
+      "deliverables": [
+        "Civic Web Portal",
+        "Citizen Feedback",
+        "SME Directory",
+        "Event Calendar"
+      ],
+      "metrics": [
+        {
+          "label": "Resident Reach",
+          "value": "1,500+"
+        },
+        {
+          "label": "Stack",
+          "value": "React"
+        },
+        {
+          "label": "Animation",
+          "value": "Framer"
+        }
+      ],
+      "liveUrl": "https://baradarw02.vercel.app/"
+    },
+    {
+      "id": "k3-management",
+      "indexNumber": 5,
+      "formattedIndex": "005",
+      "workArchiveNumber": 5,
+      "title": "K3 Management",
+      "category": "Safety Compliance (K3) & Incident Tracking",
+      "year": "2026",
+      "client": "Manufacturing Safety Division",
+      "role": "Full-Stack System Architect",
+      "zPosition": -60,
+      "offsetX": 0.3,
+      "offsetY": -0.05,
+      "accentColor": "#EF4444",
+      "secondaryColor": "#F87171",
+      "bgDark": "#140707",
+      "mediaUrl": "/images/K3 Management.webp",
+      "tags": [
+        "React",
+        "Framer Motion",
+        "Tailwind CSS",
+        "Supabase"
+      ],
+      "summary": "An Occupational Health and Safety (K3) compliance web platform engineered to modernize hazard inspections, safety incident reporting, and mandatory manufacturing audits.",
+      "challenge": "Digitizes paper checklists into automated safety audit trails, risk severity matrices, and real-time inspector dispatches aligned with Indonesian industrial safety standards.",
+      "deliverables": [
+        "Inspection System",
+        "Hazard Matrix",
+        "Audit Logging",
+        "Safety Dashboard"
+      ],
+      "metrics": [
+        {
+          "label": "Audit Speed",
+          "value": "2.5x"
+        },
+        {
+          "label": "Zero Paper",
+          "value": "100%"
+        },
+        {
+          "label": "Database",
+          "value": "Supabase"
+        }
+      ],
+      "liveUrl": "https://github.com/Mrzoee"
+    },
+    {
+      "id": "geasy",
+      "indexNumber": 6,
+      "formattedIndex": "006",
+      "workArchiveNumber": 6,
+      "title": "Geasy — Smart Nutrition",
+      "category": "AI HealthTech & Sustainable Ecosystem (IPITEX Gold)",
+      "year": "2026",
+      "client": "Geasy Innovation Initiative",
+      "role": "Lead Product Designer & AI Integrator",
+      "zPosition": -72,
+      "offsetX": -0.34,
+      "offsetY": 0.06,
+      "accentColor": "#8B5CF6",
+      "secondaryColor": "#A78BFA",
+      "bgDark": "#0D0817",
+      "mediaUrl": "/images/Geasy.webp",
+      "tags": [
+        "Figma",
+        "PHP",
+        "Bootstrap",
+        "AI Chatbot",
+        "IPITEX Gold"
+      ],
+      "summary": "Gold Medalist at IPITEX 2026 (Bangkok) and Silver Medalist at WYIE 2026 (Malaysia). Geasy is an AI-powered smart sustainable nutrition 5-in-1 ICT ecosystem designed to curb Non-Communicable Diseases (NCDs).",
+      "challenge": "Combines Smart Nutriplanner, Nutrimpact Tracker, Healthy Market, Gizilearn educational modules, and Anti-Food Waste recipes powered by computer-vision meal analysis and AI chatbot consultation.",
+      "deliverables": [
+        "5-in-1 Platform",
+        "AI Chatbot",
+        "Nutriplanner",
+        "Waste Reduction"
+      ],
+      "metrics": [
+        {
+          "label": "IPITEX Award",
+          "value": "Gold 🥇"
+        },
+        {
+          "label": "WYIE Award",
+          "value": "Silver 🥈"
+        },
+        {
+          "label": "Modules",
+          "value": "5-in-1"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/proto/BkJd3AOgjtGQLJTkwHfi4U/Geasy?node-id=317-2637&scaling=scale-down&page-id=0%3A1"
+    },
+    {
+      "id": "nutrition-kita",
+      "indexNumber": 7,
+      "formattedIndex": "007",
+      "workArchiveNumber": 7,
+      "title": "Nutrition Kita",
+      "category": "Machine Learning (KNN) Health Prediction",
+      "year": "2026",
+      "client": "Academic Final Research",
+      "role": "ML & Full-Stack Developer",
+      "zPosition": -84,
+      "offsetX": 0.28,
+      "offsetY": -0.04,
+      "accentColor": "#2DD4BF",
+      "secondaryColor": "#5EEAD4",
+      "bgDark": "#051312",
+      "mediaUrl": "/images/Nutrition Kita.webp",
+      "tags": [
+        "PHP",
+        "Machine Learning",
+        "KNN",
+        "Bootstrap",
+        "AI Chatbot"
+      ],
+      "summary": "A machine-learning-driven health prediction platform utilizing K-Nearest Neighbors (KNN) algorithms to assess individual nutritional risk profiles and dietary requirements.",
+      "challenge": "Integrates automated nutritional meal recommendations, interactive health literacy modules, and an AI conversational chatbot trained on Indonesian dietary guidelines.",
+      "deliverables": [
+        "KNN ML Model",
+        "Health Predictor",
+        "Dietary Engine",
+        "Chatbot UI"
+      ],
+      "metrics": [
+        {
+          "label": "ML Model",
+          "value": "KNN"
+        },
+        {
+          "label": "Accuracy",
+          "value": "92.4%"
+        },
+        {
+          "label": "Degree Project",
+          "value": "S1 Skripsi"
+        }
+      ],
+      "liveUrl": "https://github.com/Mrzoee"
+    },
+    {
+      "id": "portofolio-dizzo",
+      "indexNumber": 8,
+      "formattedIndex": "008",
+      "workArchiveNumber": 8,
+      "title": "Portofolio Dizzo",
+      "category": "Personal Creative Portfolio & Showcase",
+      "year": "2026",
+      "client": "Personal Brand",
+      "role": "Creative Technologist",
+      "zPosition": -96,
+      "offsetX": -0.26,
+      "offsetY": 0.05,
+      "accentColor": "#C084FC",
+      "secondaryColor": "#E879F9",
+      "bgDark": "#120718",
+      "mediaUrl": "/images/My Porto.webp",
+      "tags": [
+        "React",
+        "Framer Motion",
+        "Tailwind CSS",
+        "Vercel"
+      ],
+      "summary": "A dedicated digital portfolio engineered to spotlight the background, skills, design engineering craft, and international accolades earned by Dizzo Violeta.",
+      "challenge": "Features high-contrast dark aesthetics, smooth page choreography, comprehensive experience timelines, and responsive project displays.",
+      "deliverables": [
+        "Portfolio Flagship",
+        "Interaction Design",
+        "Timeline System",
+        "Project Hub"
+      ],
+      "metrics": [
+        {
+          "label": "Performance",
+          "value": "100"
+        },
+        {
+          "label": "Design Craft",
+          "value": "Hi-Fi"
+        },
+        {
+          "label": "Platform",
+          "value": "React"
+        }
+      ],
+      "liveUrl": "https://portofoliodizzo.vercel.app/"
+    },
+    {
+      "id": "waste-to-wellness",
+      "indexNumber": 9,
+      "formattedIndex": "009",
+      "workArchiveNumber": 9,
+      "title": "Waste To Wellness (W2W)",
+      "category": "Child Development & Sustainable Eco (WICE Grand Prize)",
+      "year": "2025",
+      "client": "W2W Global Initiative",
+      "role": "Lead UI/UX Designer & Researcher",
+      "zPosition": -108,
+      "offsetX": 0.32,
+      "offsetY": -0.07,
+      "accentColor": "#10B981",
+      "secondaryColor": "#34D399",
+      "bgDark": "#06140E",
+      "mediaUrl": "/images/Waste to Wellnes.webp",
+      "tags": [
+        "Figma",
+        "Canva",
+        "WICE Grand Prize",
+        "Child Nutrition"
+      ],
+      "summary": "Grand Prize and Gold Medal winner at WICE 2025 and Gold Medal at GYIC 2025. W2W monitors child physical development using anthropometry while promoting sustainable packaging.",
+      "challenge": "Provides parents with intuitive child growth percentiles, nutritional guidance, and an interactive prototype backed by physical sustainable packaging design.",
+      "deliverables": [
+        "Mobile Prototype",
+        "Anthropometry UI",
+        "Packaging System",
+        "Parent Guides"
+      ],
+      "metrics": [
+        {
+          "label": "WICE Award",
+          "value": "Grand Prize 🏆"
+        },
+        {
+          "label": "GYIC Award",
+          "value": "Gold 🥇"
+        },
+        {
+          "label": "Best Presentation",
+          "value": "Winner"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/design/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=988-10107"
+    },
+    {
+      "id": "genpro-app",
+      "indexNumber": 10,
+      "formattedIndex": "010",
+      "workArchiveNumber": 10,
+      "title": "Genpro App",
+      "category": "Product Design & Child Development Prototyping",
+      "year": "2025",
+      "client": "Genpro Platform",
+      "role": "UI/UX Researcher & Designer",
+      "zPosition": -120,
+      "offsetX": -0.3,
+      "offsetY": 0.04,
+      "accentColor": "#EC4899",
+      "secondaryColor": "#F472B6",
+      "bgDark": "#160811",
+      "mediaUrl": "/images/Genpro App.webp",
+      "tags": [
+        "Figma",
+        "FigJam",
+        "User Research",
+        "Design Thinking"
+      ],
+      "summary": "An end-to-end user-centered design engagement in Figma and FigJam exploring early childhood developmental tracking through structured design thinking methodologies.",
+      "challenge": "Synthesized user interviews and competitor analyses into actionable journey maps, low-fidelity wireframes, and polished interactive prototypes.",
+      "deliverables": [
+        "User Research",
+        "Figma Prototype",
+        "User Journey Map",
+        "Hi-Fi UI"
+      ],
+      "metrics": [
+        {
+          "label": "User Flow",
+          "value": "4 Stages"
+        },
+        {
+          "label": "Design System",
+          "value": "Figma"
+        },
+        {
+          "label": "Testing",
+          "value": "Validated"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/proto/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=511-6037&scaling=scale-down&page-id=0%3A1"
+    },
+    {
+      "id": "karangpelem",
+      "indexNumber": 11,
+      "formattedIndex": "011",
+      "workArchiveNumber": 11,
+      "title": "Website Desa Karangpelem",
+      "category": "Smart Village & Public Administration Portal",
+      "year": "2025",
+      "client": "Pemerintah Desa Karangpelem",
+      "role": "UI/UX Designer",
+      "zPosition": -132,
+      "offsetX": 0.26,
+      "offsetY": -0.05,
+      "accentColor": "#F97316",
+      "secondaryColor": "#FB923C",
+      "bgDark": "#140B05",
+      "mediaUrl": "/images/Karang Pelem.webp",
+      "tags": [
+        "Figma",
+        "Civic Design",
+        "Design System",
+        "Public Service"
+      ],
+      "summary": "High-fidelity (HI-FI) civic website design to provide transparent public information regarding administrative services, leadership hierarchy, and regional programs for Karangpelem village.",
+      "challenge": "Crafted an accessible design language for rural citizens of all digital literacy levels, establishing clear navigation paths for document applications and village announcements.",
+      "deliverables": [
+        "Village Portal UI",
+        "Public Services Guide",
+        "Information Architecture",
+        "Figma Prototype"
+      ],
+      "metrics": [
+        {
+          "label": "Accessibility",
+          "value": "Inclusive"
+        },
+        {
+          "label": "Figma Screens",
+          "value": "28+"
+        },
+        {
+          "label": "Type",
+          "value": "Civic UI"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/proto/hiiPtDahyNY4TUCXtnGIaU/Website-Desa?node-id=2-2&scaling=scale-down&page-id=0%3A1"
+    },
+    {
+      "id": "zavelin-tech",
+      "indexNumber": 12,
+      "formattedIndex": "012",
+      "workArchiveNumber": 12,
+      "title": "Zavelin Tech",
+      "category": "Smart Home Tech & IoT Services Flagship",
+      "year": "2025",
+      "client": "Zavelin Business",
+      "role": "Digital Brand Architect & UI Designer",
+      "zPosition": -144,
+      "offsetX": -0.32,
+      "offsetY": 0.06,
+      "accentColor": "#38BDF8",
+      "secondaryColor": "#818CF8",
+      "bgDark": "#070D18",
+      "mediaUrl": "/images/Zavelin Tech.webp",
+      "tags": [
+        "Figma",
+        "IoT UI",
+        "E-Commerce",
+        "Brand Platform"
+      ],
+      "summary": "A sleek, high-fidelity corporate digital platform designed to position Zavelin Tech as a premium provider of smart home automation and intelligent living installations.",
+      "challenge": "Visualizes connected IoT ecosystems through clean dark-mode interfaces, hardware specification tables, and intuitive service consultation booking flows.",
+      "deliverables": [
+        "Digital Flagship",
+        "Hardware Showcase",
+        "Consultation Flow",
+        "Design Tokens"
+      ],
+      "metrics": [
+        {
+          "label": "Brand Impact",
+          "value": "Premium"
+        },
+        {
+          "label": "Style",
+          "value": "Dark IoT"
+        },
+        {
+          "label": "Tool",
+          "value": "Figma"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/design/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=131-920"
+    },
+    {
+      "id": "stunt-app",
+      "indexNumber": 13,
+      "formattedIndex": "013",
+      "workArchiveNumber": 13,
+      "title": "Stunt App",
+      "category": "Child Stunting Prevention (GYIC Gold Medal)",
+      "year": "2024",
+      "client": "Community Healthcare Project",
+      "role": "Lead UI/UX Designer",
+      "zPosition": -156,
+      "offsetX": 0.3,
+      "offsetY": -0.04,
+      "accentColor": "#F43F5E",
+      "secondaryColor": "#FB7185",
+      "bgDark": "#14070B",
+      "mediaUrl": "/images/Stunt App.webp",
+      "tags": [
+        "Figma",
+        "GYIC Gold",
+        "Healthcare UI",
+        "Growth Tracker"
+      ],
+      "summary": "Gold Medalist at GYIC 2024. Stunt App is a mobile application prototype engineered to combat child stunting through accessible anthropometric screening and preventive hygiene education.",
+      "challenge": "Features child anthropometry growth percentile evaluation, hygiene sanitation guidance, telemedicine consultation booking, and gamified nutritional quizzes for young mothers.",
+      "deliverables": [
+        "Mobile Prototype",
+        "Growth Calculator",
+        "Hygiene Tracker",
+        "Consultation Flow"
+      ],
+      "metrics": [
+        {
+          "label": "GYIC Award",
+          "value": "Gold 🥇"
+        },
+        {
+          "label": "User Feedback",
+          "value": "4.9 / 5"
+        },
+        {
+          "label": "Impact",
+          "value": "Stunting"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/proto/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=198-538&scaling=scale-down&page-id=0%3A1"
+    },
+    {
+      "id": "fostifest",
+      "indexNumber": 14,
+      "formattedIndex": "014",
+      "workArchiveNumber": 14,
+      "title": "Website Fostifest",
+      "category": "Open Source Tech Festival Experience",
+      "year": "2024",
+      "client": "FOSTI UMS",
+      "role": "Design Director & Head of UI/UX",
+      "zPosition": -168,
+      "offsetX": -0.28,
+      "offsetY": 0.05,
+      "accentColor": "#E5C07B",
+      "secondaryColor": "#FBBF24",
+      "bgDark": "#131008",
+      "mediaUrl": "/images/Fostifest.webp",
+      "tags": [
+        "Figma",
+        "Open Source",
+        "Event Identity",
+        "Landing Page"
+      ],
+      "summary": "High-fidelity promotional festival landing page created to introduce and energize FOSTI Festival, uniting students, developers, and open-source advocates across universities.",
+      "challenge": "Highlights competition tracks, keynote speaker line-ups, and registration timelines through vibrant typography and high-contrast dark festival visual branding.",
+      "deliverables": [
+        "Festival Website",
+        "Event Branding",
+        "Speaker Lineup UI",
+        "Schedule Flow"
+      ],
+      "metrics": [
+        {
+          "label": "Attendance",
+          "value": "500+ Devs"
+        },
+        {
+          "label": "Role",
+          "value": "Head UI/UX"
+        },
+        {
+          "label": "Status",
+          "value": "Delivered"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/design/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=130-110"
+    },
+    {
+      "id": "coffeezo",
+      "indexNumber": 15,
+      "formattedIndex": "015",
+      "workArchiveNumber": 15,
+      "title": "Coffeezo",
+      "category": "Artisan Coffee & UI/UX Competition Entry",
+      "year": "2024",
+      "client": "UI/UX Competition",
+      "role": "UI/UX Designer",
+      "zPosition": -180,
+      "offsetX": 0.32,
+      "offsetY": -0.06,
+      "accentColor": "#D97706",
+      "secondaryColor": "#F59E0B",
+      "bgDark": "#130C05",
+      "mediaUrl": "/images/Coffeezo.webp",
+      "tags": [
+        "Figma",
+        "Competition",
+        "E-Commerce",
+        "Brand System"
+      ],
+      "summary": "An artisan coffee brand and digital ordering platform concept designed for a national UI/UX design competition, celebrating coffee origins and bespoke brewing rituals.",
+      "challenge": "Showcases bean tasting notes, roast intensity profiles, and seamless bean-to-cup ordering through a warm, rich espresso aesthetic and tactile micro-interactions.",
+      "deliverables": [
+        "E-Commerce UI",
+        "Roast Profile Inspector",
+        "Coffee Origin Map",
+        "Cart Flow"
+      ],
+      "metrics": [
+        {
+          "label": "Design Scope",
+          "value": "Competition"
+        },
+        {
+          "label": "Theme",
+          "value": "Specialty Coffee"
+        },
+        {
+          "label": "Figma",
+          "value": "Hi-Fi"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/design/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=133-3914"
+    },
+    {
+      "id": "gonews",
+      "indexNumber": 16,
+      "formattedIndex": "016",
+      "workArchiveNumber": 16,
+      "title": "Gonews",
+      "category": "Digital Journalism & Curated Editorial Portal",
+      "year": "2024",
+      "client": "GoNews Media",
+      "role": "UI/UX Designer",
+      "zPosition": -192,
+      "offsetX": -0.26,
+      "offsetY": 0.04,
+      "accentColor": "#6366F1",
+      "secondaryColor": "#818CF8",
+      "bgDark": "#0A0A16",
+      "mediaUrl": "/images/Gonews.webp",
+      "tags": [
+        "Figma",
+        "Editorial Design",
+        "News Portal",
+        "Typography"
+      ],
+      "summary": "A modern digital news portal and article blog platform engineered for crisp reading legibility, rapid breaking-news updates, and effortless category exploration.",
+      "challenge": "Balances dense multimedia journalism feeds with uncluttered typography layouts, bookmarking features, and responsive reading comfort modes.",
+      "deliverables": [
+        "Editorial Portal",
+        "Article Reader",
+        "Category Hierarchy",
+        "Breaking News Feed"
+      ],
+      "metrics": [
+        {
+          "label": "Legibility",
+          "value": "Optimized"
+        },
+        {
+          "label": "Layout",
+          "value": "Editorial"
+        },
+        {
+          "label": "Screens",
+          "value": "18+"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/design/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=129-57"
+    },
+    {
+      "id": "stunt-guardian",
+      "indexNumber": 17,
+      "formattedIndex": "017",
+      "workArchiveNumber": 17,
+      "title": "Stunt Guardian",
+      "category": "Adolescent Mental Health Monitoring (Freelance)",
+      "year": "2024",
+      "client": "Adolescent Wellness Initiative",
+      "role": "Freelance UI/UX Consultant",
+      "zPosition": -204,
+      "offsetX": 0,
+      "offsetY": 0,
+      "accentColor": "#A855F7",
+      "secondaryColor": "#C084FC",
+      "bgDark": "#10061A",
+      "mediaUrl": "/images/Stunt Guardian.webp",
+      "tags": [
+        "Figma",
+        "Mental Health",
+        "Freelance",
+        "Teen Wellness"
+      ],
+      "summary": "An empathetic application prototype designed to monitor emotional well-being and psychological resilience among teenagers and adolescents in educational settings.",
+      "challenge": "Created confidential mood-check journals, anonymous counselor chat channels, and interactive coping exercise guides wrapped in a soothing, stigma-free visual interface.",
+      "deliverables": [
+        "Mobile Prototype",
+        "Mood Journal",
+        "Anonymous Chat",
+        "Self-Care Toolkit"
+      ],
+      "metrics": [
+        {
+          "label": "Project Type",
+          "value": "Freelance"
+        },
+        {
+          "label": "Audience",
+          "value": "Adolescents"
+        },
+        {
+          "label": "Status",
+          "value": "Prototype"
+        }
+      ],
+      "liveUrl": "https://www.figma.com/proto/reriYZEDlBaeXZRO95PkvU/ALL-PORTOFOLIO?node-id=249-1251&scaling=scale-down&page-id=0%3A1"
+    }
+  ],
+  "eG": -197.8,
+  "ep": {
+    "name": "Dizzo Violeta",
+    "monogram": "DV",
+    "role": "IT Staff at PT Indah Kiat Pulp & Paper Tbk",
+    "specialization": "UI/UX Design Enthusiast | Front-End Enthusiast | Web & Apps Design Enthusiast | AI Enthusiast",
+    "location": "Serang, Banten / Surakarta, Indonesia",
+    "availability": "Open for Collaborations & Selected Commissions",
+    "bioSnippet": "Informatics Engineering graduate specializing in UI/UX Design, Front-End & Mobile Development, and AI-driven digital products with multiple International Gold Medals.",
+    "email": "dizzo0607@gmail.com",
+    "github": "https://github.com/Mrzoee",
+    "linkedin": "https://www.linkedin.com/in/dizzo0607/",
+    "instagram": "https://www.instagram.com/dizzo.va?igsh=MXhrZ2IwaHlqZmNhag%3D%3D&utm_source=qr",
+    "profileImage": "/images/profile.webp",
+    "totalWorks": 1338
+  },
+  "rW": [
+    {
+      "name": "Flutter",
+      "level": "Cross-Platform Mobile",
+      "category": "Mobile",
+      "color": "#38BDF8"
+    },
+    {
+      "name": "Figma",
+      "level": "UI/UX Design & Systems",
+      "category": "Design",
+      "color": "#EC4899"
+    },
+    {
+      "name": "React",
+      "level": "Frontend Engineering",
+      "category": "Frontend",
+      "color": "#00F0FF"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Core Language",
+      "category": "Language",
+      "color": "#FACC15"
+    },
+    {
+      "name": "Tailwind CSS",
+      "level": "Utility-First Styling",
+      "category": "Styling",
+      "color": "#2DD4BF"
+    },
+    {
+      "name": "PHP",
+      "level": "Backend Development",
+      "category": "Backend",
+      "color": "#818CF8"
+    },
+    {
+      "name": "Supabase",
+      "level": "PostgreSQL & Realtime",
+      "category": "Database",
+      "color": "#34D399"
+    },
+    {
+      "name": "Firebase",
+      "level": "Cloud & Auth Engine",
+      "category": "Cloud",
+      "color": "#F59E0B"
+    },
+    {
+      "name": "C# / .NET",
+      "level": "Enterprise Applications",
+      "category": "Language",
+      "color": "#A78BFA"
+    },
+    {
+      "name": "Machine Learning",
+      "level": "KNN & Predictive Models",
+      "category": "AI",
+      "color": "#F43F5E"
+    }
+  ],
+  "wF": {
+    "title": "About Me",
+    "paragraphs": [
+      "I am an Informatics Engineering graduate specializing in UI/UX Design, Front-End & Mobile Development, and AI-driven digital solutions. Backed by a strong academic foundation and a deep passion for technology, I am dedicated to transforming user research into intuitive, visually engaging, and high-impact digital products.",
+      "Throughout my professional journey, I have managed the entire product design lifecycle—from user research, wireframing, and interactive prototyping in Figma, to translating design systems into responsive code using React, Flutter, Tailwind CSS, and C#. My internship experiences across corporate and government institutions, paired with leadership roles in tech organizations, have sharpened my abilities in cross-functional collaboration, complex problem-solving, and delivering scalable software.",
+      "My commitment to innovation is reflected in winning multiple International Gold Medals and Special Awards at prestigious technology expositions in Thailand, Malaysia, and Indonesia (including IPITEX, WICE, WYIE, and GYIC). I am driven to continuously expand my technical stack and engineer state-of-the-art digital experiences in fast-paced environments."
+    ]
+  }
+}

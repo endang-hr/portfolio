@@ -11,11 +11,7 @@ import {
   Instagram,
   Mail,
   Sparkles,
-  Layers,
-  Camera,
-  Maximize2,
-  MapPin,
-  CheckCircle2
+  Layers
 } from 'lucide-react';
 import {
   portfolioProfile,
@@ -23,28 +19,22 @@ import {
   careerTimeline,
   awardsList,
   skillsData,
-  projectsList,
-  itDocumentation
+  projectsList
 } from '../data/portfolioData';
 
 export default function AboutModal({ isOpen, onClose, onOpenContact }) {
   const [activeTab, setActiveTab] = useState('biography');
-  const [selectedDocImage, setSelectedDocImage] = useState(null);
 
-  // Escape key to close modal or lightbox
+  // Escape key to close modal
   React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        if (selectedDocImage) {
-          setSelectedDocImage(null);
-        } else {
-          onClose();
-        }
+        onClose();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, selectedDocImage]);
+  }, [onClose]);
 
   if (!isOpen) return null;
 
@@ -173,7 +163,6 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
             {[
               { id: 'biography', label: 'Biography', icon: Globe },
               { id: 'experience', label: 'Experience & Education', icon: Briefcase },
-              { id: 'documentation', label: `Dokumentasi IT (${itDocumentation.length})`, icon: Camera },
               { id: 'awards', label: `Awards & Certifications (${awardsList.length})`, icon: Award },
               { id: 'skills', label: 'Tech Stack & Skills', icon: Code }
             ].map(tab => {
@@ -308,19 +297,6 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                         ))}
                       </ul>
 
-                      {item.company.includes('CBA') && (
-                        <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-2">
-                          <span className="text-[11px] text-white/50">Dokumentasi riil lapangan: Fiber Optik, Rack Server, NVR, CCTV &amp; Printer</span>
-                          <button
-                            type="button"
-                            onClick={() => setActiveTab('documentation')}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[11px] font-semibold text-cyan-300 hover:bg-cyan-400/20 hover:border-cyan-400 transition-all cursor-pointer shadow-sm"
-                          >
-                            <Camera className="h-3 w-3" />
-                            <span>Buka Dokumentasi IT ({itDocumentation.length} Foto) →</span>
-                          </button>
-                        </div>
-                      )}
                     </div>
                   ))}
                 </div>
@@ -373,116 +349,6 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* TAB: IT OPERATIONS & FIELD DOCUMENTATION */}
-          {activeTab === 'documentation' && (
-            <div className="space-y-6 animate-fadeIn">
-              {/* Header Info Banner */}
-              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <div>
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <Camera className="h-4 w-4" />
-                    <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wider">
-                      Dokumentasi Lapangan &amp; Infrastruktur IT
-                    </h3>
-                  </div>
-                  <p className="text-xs text-white/70 mt-1.5 leading-relaxed max-w-2xl">
-                    Dokumentasi otentik pelaksanaan tugas IT Support &amp; Infrastructure di lingkungan industri: perakitan &amp; terminasi fiber optik, manajemen server rack, cluster NVR/CCTV, serta diagnostik hardware workstation.
-                  </p>
-                </div>
-                <span className="shrink-0 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-300">
-                  {itDocumentation.length} Dokumentasi Riil
-                </span>
-              </div>
-
-              {/* Grid of Documentation Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                {itDocumentation.map((doc) => (
-                  <div
-                    key={doc.id}
-                    className="group rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.05] flex flex-col justify-between"
-                  >
-                    <div>
-                      {/* Image Thumbnail with Click-to-Zoom */}
-                      <div
-                        onClick={() => setSelectedDocImage(doc)}
-                        className="relative w-full aspect-[16/10] overflow-hidden bg-black/60 cursor-pointer"
-                      >
-                        <img
-                          src={doc.image}
-                          alt={doc.title}
-                          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-75 group-hover:opacity-50 transition-opacity" />
-
-                        {/* Top Badge */}
-                        <div className="absolute top-3 left-3 z-10">
-                          <span className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-black/70 px-2.5 py-1 text-[10px] font-medium text-white/95 backdrop-blur-md shadow-sm">
-                            {doc.badge}
-                          </span>
-                        </div>
-
-                        {/* Bottom-Right Zoom Pill */}
-                        <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-medium text-white/80 backdrop-blur-md transition-colors group-hover:bg-cyan-400 group-hover:text-black shadow-md">
-                          <Maximize2 className="h-3 w-3" />
-                          <span>Klik Perbesar</span>
-                        </div>
-                      </div>
-
-                      {/* Content Card Body */}
-                      <div className="p-4 sm:p-5">
-                        <div className="flex items-center gap-1.5 text-[11px] text-cyan-400/80 mb-1.5">
-                          <MapPin className="h-3 w-3 shrink-0" />
-                          <span>{doc.location}</span>
-                        </div>
-
-                        <h4 className="font-serif italic text-base sm:text-lg text-white group-hover:text-cyan-200 transition-colors leading-snug">
-                          {doc.title}
-                        </h4>
-
-                        <p className="text-xs text-white/70 mt-2.5 leading-relaxed">
-                          {doc.description}
-                        </p>
-
-                        {/* Equipment Badges */}
-                        <div className="mt-3.5 pt-3 border-t border-white/10">
-                          <span className="text-[10px] uppercase tracking-wider text-white/40 block mb-1.5 font-semibold">
-                            Peralatan &amp; Cakupan:
-                          </span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {doc.equipment.map((eq, eqIdx) => (
-                              <span
-                                key={eqIdx}
-                                className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-white/75"
-                              >
-                                {eq}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Footer Highlights */}
-                    <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {doc.highlights.map((hl, hlIdx) => (
-                          <span
-                            key={hlIdx}
-                            className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2 py-0.5"
-                          >
-                            <CheckCircle2 className="h-2.5 w-2.5" />
-                            <span>{hl}</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           )}
@@ -602,82 +468,6 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
 
         </div>
       </div>
-
-      {/* LIGHTBOX MODAL FOR IT DOCUMENTATION */}
-      {selectedDocImage && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-xl animate-fadeIn"
-          onClick={() => setSelectedDocImage(null)}
-        >
-          <div
-            className="relative z-10 flex flex-col max-w-5xl w-full max-h-[92vh] rounded-3xl border border-white/20 bg-[#0a0a0e]/95 shadow-[0_0_100px_rgba(0,0,0,0.95)] overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Lightbox Header */}
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 bg-white/[0.02]">
-              <div className="flex items-center gap-3">
-                <span className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-0.5 text-xs font-semibold text-cyan-300">
-                  {selectedDocImage.badge}
-                </span>
-                <span className="text-xs text-white/50 flex items-center gap-1">
-                  <MapPin className="h-3 w-3 text-cyan-400" />
-                  {selectedDocImage.location}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedDocImage(null)}
-                aria-label="Tutup preview"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/80 hover:bg-white hover:text-black transition-all"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Lightbox Image Viewport */}
-            <div className="relative flex-1 min-h-0 bg-black/80 flex items-center justify-center p-2 sm:p-4 overflow-hidden">
-              <img
-                src={selectedDocImage.image}
-                alt={selectedDocImage.title}
-                className="max-h-[60vh] sm:max-h-[65vh] w-auto max-w-full object-contain rounded-xl shadow-2xl"
-              />
-            </div>
-
-            {/* Lightbox Details Footer */}
-            <div className="p-4 sm:p-6 border-t border-white/10 bg-[#0c0d12] space-y-3">
-              <h3 className="font-serif italic text-lg sm:text-xl text-white font-normal">
-                {selectedDocImage.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-                {selectedDocImage.description}
-              </p>
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedDocImage.equipment.map((eq, i) => (
-                    <span
-                      key={i}
-                      className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-[11px] text-white/70"
-                    >
-                      {eq}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {selectedDocImage.highlights.map((hl, i) => (
-                    <span
-                      key={i}
-                      className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 rounded-full px-2.5 py-0.5"
-                    >
-                      <CheckCircle2 className="h-3 w-3" />
-                      <span>{hl}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

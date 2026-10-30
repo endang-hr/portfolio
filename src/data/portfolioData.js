@@ -130,64 +130,6 @@ export const careerTimeline = {
   ]
 };
 
-export const itDocumentation = [
-  {
-    id: "doc-fiber-optic-odf",
-    title: "Terminasi & Patching Fiber Optic ODF (Optical Distribution Frame)",
-    category: "Fiber Optic Backbone",
-    badge: "🌐 Fiber Optic Backbone",
-    image: "/images/documentation/it-fiber-optic-odf-patching.jpg",
-    location: "Server Room — PT CBA Chemical Industry",
-    equipment: ["INDORACK ODF 144-Cores", "Single-Mode Patch Cord (SC/LC)", "Core Route Mapping", "Cable Management Tray"],
-    description: "Pengelolaan dan jumpering kabel patch cord fiber optik single-mode pada Optical Distribution Frame (ODF) 144-core merk INDORACK. Melakukan pemetaan core antar gedung produksi dan kantor (label A3, B1, F5), menjaga bending radius yang aman, serta memastikan stabilitas jalur transmisi data utama pabrik berkecepatan tinggi tanpa packet loss.",
-    highlights: ["144-Core ODF Rackmount", "Backbone Antar Gedung Produksi", "Zero Packet Drop"]
-  },
-  {
-    id: "doc-server-rack-networking",
-    title: "Manajemen Server Rack, Switch Enterprise & Sentral PABX",
-    category: "Network Infrastructure & PABX",
-    badge: "🖥️ Network Infrastructure",
-    image: "/images/documentation/it-server-rack-networking.jpg",
-    location: "Main Distribution Frame (MDF) Room",
-    equipment: ["HPE / Aruba Managed Gigabit Switch", "Patch Panel CAT6 UTP", "Sentral PABX Panasonic", "Cable Management Duct"],
-    description: "Pengelolaan rack server jaringan terpusat: manajemen kabel patch panel CAT6 UTP terstruktur (port A sampai D), konfigurasi port switch managed HPE untuk distribusi LAN antar divisi, serta pemeliharaan unit telekomunikasi suara internal menggunakan sentral PABX Panasonic.",
-    highlights: ["HPE Managed Switch", "Structured UTP Cabling", "PABX Telephony System"]
-  },
-  {
-    id: "doc-cctv-nvr-cluster",
-    title: "Manajemen Cluster NVR/DVR CCTV & Sentralisasi Daya UPS",
-    category: "CCTV Surveillance & Power Backup",
-    badge: "📹 CCTV & Power Backup",
-    image: "/images/documentation/it-cctv-nvr-cluster.jpg",
-    location: "Security & Monitoring Command Rack",
-    equipment: ["Cluster HIKVISION NVR/DVR", "Enterprise UPS Tower", "Area Zoning Labels", "Surge Protection"],
-    description: "Penataan dan sentralisasi cluster perekam video kamera pengawas (NVR/DVR HIKVISION) multi-area pabrik (Gedung D, Gudang, Mixing Dept) yang terhubung ke unit UPS sentral dengan surge protection. Memastikan sistem rekaman pengawasan keamanan pabrik aktif 24/7 dan data video tetap aman saat terjadi gangguan daya listrik PLN.",
-    highlights: ["24/7 Continuous Recording", "Multi-Building NVR Cluster", "UPS Power Redundancy"]
-  },
-  {
-    id: "doc-printer-hardware-maintenance",
-    title: "Troubleshooting & Pemeliharaan Perangkat Keras Printer",
-    category: "Hardware Maintenance & End-User Support",
-    badge: "🛠️ Hardware & Maintenance",
-    image: "/images/documentation/it-printer-hardware-maintenance.jpg",
-    location: "Operational Workstation / Office Area",
-    equipment: ["Printer Ink Tank System", "Printhead Cleaning Kit", "Paper Feed Roller", "Workstation PC"],
-    description: "Tindakan perbaikan dan pemeliharaan langsung (on-site repair) pada perangkat printer operasional: perbaikan mekanisme penarik kertas (roller paper feed), pembongkaran casing, pembersihan saluran printhead tinta mampet, serta kalibrasi hasil cetak untuk memastikan kelancaran pencetakan dokumen harian.",
-    highlights: ["Direct On-Site Repair", "Roller & Printhead Overhaul", "Operational Ready"]
-  },
-  {
-    id: "doc-nvr-storage-network-diagnostic",
-    title: "Diagnostik Jaringan Real-Time & Penggantian Storage NVR",
-    category: "Storage Maintenance & Diagnostic",
-    badge: "🔍 Diagnostics & Storage",
-    image: "/images/documentation/it-nvr-storage-network-diagnostic.jpg",
-    location: "IT Technical Workstation",
-    equipment: ["Seagate SkyHawk Surveillance HDD", "Motherboard NVR", "MacBook Terminal Ping Test", "Internal Flutter App"],
-    description: "Inspeksi internal perangkat keras NVR, penggantian dan upgrade hard disk surveillance (Seagate SkyHawk), pengujian konektivitas latensi jaringan secara real-time via terminal command-line (ICMP ping test ke gateway lokal 192.168.2.x), serta pengembangan aplikasi formulir peminjaman perangkat IT berbasis Flutter.",
-    highlights: ["Surveillance HDD Health Check", "ICMP Ping Latency Testing", "Internal Tool Engineering"]
-  }
-];
-
 export const skillsData = [
   { name: "React / Next.js", level: "Advanced Frontend", category: "Frontend", color: "#61DAFB" },
   { name: "Three.js / WebGL", level: "3D Graphics & Shaders", category: "Graphics", color: "#00F0FF" },

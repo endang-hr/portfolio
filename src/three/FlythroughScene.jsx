@@ -417,6 +417,10 @@ export default function FlythroughScene({
     };
 
     const onClick = (e) => {
+      if (e.clientX !== undefined && e.clientY !== undefined) {
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      }
       raycaster.setFromCamera(mouse, camera);
       const interactableMeshes = cardMeshes.filter(m => m.userData.isInteractable);
       const intersects = raycaster.intersectObjects(interactableMeshes);
@@ -427,8 +431,47 @@ export default function FlythroughScene({
       }
     };
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+
+    const onTouchStart = (e) => {
+      if (e.touches && e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = performance.now();
+      }
+    };
+
+    const onTouchEnd = (e) => {
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        const dt = performance.now() - touchStartTime;
+        const dist = Math.hypot(dx, dy);
+
+        // Tap detected if finger moved < 16px and tap duration < 350ms
+        if (dt < 350 && dist < 16) {
+          const clientX = e.changedTouches[0].clientX;
+          const clientY = e.changedTouches[0].clientY;
+          mouse.x = (clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+          raycaster.setFromCamera(mouse, camera);
+          const interactableMeshes = cardMeshes.filter(m => m.userData.isInteractable);
+          const intersects = raycaster.intersectObjects(interactableMeshes);
+
+          if (intersects.length > 0) {
+            const hit = intersects[0].object;
+            onSelectProject(hit.userData.project.id);
+          }
+        }
+      }
+    };
+
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('click', onClick);
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
 
     // 7. Animation Loop
     const clock = new THREE.Clock();
@@ -598,6 +641,8 @@ export default function FlythroughScene({
       cancelAnimationFrame(animId);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('click', onClick);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchend', onTouchEnd);
       window.removeEventListener('resize', onResize);
       if (renderer.domElement && container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);

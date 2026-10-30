@@ -64,58 +64,83 @@ html, body {
   overscroll-behavior: contain !important;
 }
 
-/* Custom Side Drawer for Laptop & Desktop */
+/* Custom Side Drawer for Mobile, Laptop & Desktop */
 .project-side-drawer {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 40;
+  z-index: 70;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  background-color: rgba(7, 7, 9, 0.94);
+  height: 100dvh;
+  background-color: rgba(7, 7, 9, 0.96);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
   border-right: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 25px 0 90px rgba(0, 0, 0, 0.85);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  transform: translateX(-100%);
+  box-shadow: 25px 0 90px rgba(0, 0, 0, 0.9);
+  transform: translate3d(-100%, 0, 0);
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
+  will-change: transform, opacity;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, visibility 0.45s;
+  -webkit-overflow-scrolling: touch;
 }
 
 .project-side-drawer.is-open {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
 }
 
 @media (min-width: 768px) {
   .project-side-drawer {
-    width: 46%;
-    max-width: 660px;
+    width: 48%;
+    max-width: 680px;
     min-width: 460px;
   }
 }
 
 .project-side-backdrop {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 46%;
-  z-index: 20;
+  inset: 0;
+  z-index: 65;
   cursor: pointer;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  will-change: opacity;
+  transition: opacity 0.35s ease, visibility 0.35s;
+  touch-action: manipulation;
 }
 
-@media (max-width: 767px) {
+.project-side-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
   .project-side-backdrop {
-    left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    left: 48%;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
+}
+
+.project-drawer-header {
+  padding-top: max(14px, env(safe-area-inset-top));
+  padding-bottom: 14px;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
 }
 
 .project-drawer-title {

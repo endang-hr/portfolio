@@ -12,7 +12,8 @@ import {
   Sparkles,
   Film,
   FileText,
-  Send
+  Send,
+  X
 } from 'lucide-react';
 import { projectsList } from '../data/portfolioData';
 
@@ -25,14 +26,22 @@ export default function ProjectModal({
 }) {
   const [activeTab, setActiveTab] = useState('visual');
   const [isCopied, setIsCopied] = useState(false);
+  const [currentProject, setCurrentProject] = useState(() => projectsList[0]);
+  const isOpen = Boolean(selectedProjectId);
 
-  const currentIndex = projectsList.findIndex(p => p.id === selectedProjectId);
-  const project = currentIndex >= 0 ? projectsList[currentIndex] : null;
-
-  // Reset tab when project changes
+  // Update current project whenever selectedProjectId changes to a valid project
   useEffect(() => {
-    setActiveTab('visual');
+    if (selectedProjectId) {
+      const found = projectsList.find(p => p.id === selectedProjectId);
+      if (found) {
+        setCurrentProject(found);
+        setActiveTab('visual');
+      }
+    }
   }, [selectedProjectId]);
+
+  const project = currentProject || projectsList[0];
+  const currentIndex = projectsList.findIndex(p => p.id === project?.id);
 
   const handlePrev = () => {
     if (currentIndex < 0) return;
@@ -65,33 +74,47 @@ export default function ProjectModal({
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [selectedProjectId, currentIndex]);
+  }, [selectedProjectId, currentIndex, onClose]);
 
-  if (!project) return null;
+  const handleClose = (e) => {
+    if (e) {
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    }
+    onClose();
+  };
 
   return (
     <>
-      {/* Click outside to Close & Return to Tunnel */}
+      {/* Click/Tap outside to Close & Return to Tunnel */}
       <div
-        className="project-side-backdrop"
-        onClick={onClose}
+        className={`project-side-backdrop ${isOpen ? 'is-open' : ''}`}
+        onClick={handleClose}
+        onTouchEnd={(e) => {
+          if (e.target === e.currentTarget) {
+            handleClose(e);
+          }
+        }}
         aria-label="Click outside to close project panel"
       />
 
-      {/* Side Drawer Panel (Left-docked on Laptop/Desktop, Slide-in Morph) */}
+      {/* Side Drawer Panel (Left-docked on Laptop/Desktop, Slide-in Morph from left) */}
       <aside
-        className={`project-side-drawer ${selectedProjectId ? 'is-open' : ''}`}
+        className={`project-side-drawer ${isOpen ? 'is-open' : ''}`}
         data-lenis-prevent="true"
+        aria-hidden={!isOpen}
       >
-        {/* Top Header Bar */}
-        <div className="flex items-center justify-between border-b border-white/10 px-5 py-3.5 sm:px-7 sm:py-4 bg-white/[0.02]">
-          {/* Close button with left chevron */}
+        {/* Top Header Bar with Safe Area padding & dedicated iOS touch targets */}
+        <div className="project-drawer-header sticky top-0 z-30 flex items-center justify-between border-b border-white/10 bg-[#070709]/95 backdrop-blur-2xl px-5 sm:px-7">
+          {/* Close button with Chevron - minimum 44px hit target for iOS HIG */}
           <button
             type="button"
-            onClick={onClose}
-            className="group inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/85 backdrop-blur-xl transition-all duration-200 hover:border-white/35 hover:bg-white/15 hover:text-white cursor-pointer active:scale-95"
+            onClick={handleClose}
+            onTouchEnd={handleClose}
+            className="group inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs sm:text-sm font-semibold text-white backdrop-blur-xl transition-all duration-200 hover:border-white/40 hover:bg-white/20 active:scale-95 cursor-pointer touch-manipulation select-none shadow-md"
+            aria-label="Close project panel"
           >
-            <ChevronLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" />
+            <ChevronLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
             <span>Close</span>
           </button>
 
@@ -101,7 +124,7 @@ export default function ProjectModal({
             <button
               type="button"
               onClick={handleShare}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/85 backdrop-blur-xl transition-all duration-200 hover:border-white/35 hover:bg-white/15 hover:text-white cursor-pointer active:scale-95"
+              className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-medium text-white/85 backdrop-blur-xl transition-all duration-200 hover:border-white/35 hover:bg-white/15 hover:text-white cursor-pointer active:scale-95 touch-manipulation select-none"
             >
               {isCopied ? (
                 <>
@@ -122,12 +145,23 @@ export default function ProjectModal({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white px-3.5 py-1.5 text-xs font-semibold text-black transition-all duration-200 hover:bg-white/90 active:scale-95 cursor-pointer shadow-sm"
+                className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-white/20 bg-white px-3.5 py-2 text-xs font-semibold text-black transition-all duration-200 hover:bg-white/90 active:scale-95 cursor-pointer shadow-sm touch-manipulation select-none"
               >
                 <span>Visit Live</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             )}
+
+            {/* Dedicated mobile X Close button */}
+            <button
+              type="button"
+              onClick={handleClose}
+              onTouchEnd={handleClose}
+              className="flex sm:hidden h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/25 active:scale-90 transition-all cursor-pointer touch-manipulation shadow-sm"
+              aria-label="Close project details"
+            >
+              <X className="h-4 w-4" />
+            </button>
           </div>
         </div>
 

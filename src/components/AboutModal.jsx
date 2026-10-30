@@ -69,8 +69,12 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
               e.stopPropagation();
               onClose();
             }}
+            onTouchEnd={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
             aria-label="Close modal"
-            className="absolute top-5 right-5 sm:top-6 sm:right-6 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/80 hover:border-white/50 hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 flex h-10 w-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 hover:border-white/50 hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg touch-manipulation active:scale-90"
           >
             <X className="h-4 w-4" />
           </button>

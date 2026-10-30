@@ -31,18 +31,18 @@ export default function TunnelHUD({
               aria-label="Previous project"
               disabled={activeProjectIndex <= 0}
               onClick={() => onNavigateProject(Math.max(0, activeProjectIndex - 1))}
-              className="flex h-7 w-7 items-center justify-center rounded-full text-white/70 transition hover:bg-white/15 hover:text-white disabled:opacity-25 cursor-pointer disabled:cursor-not-allowed"
+              className="flex h-8 w-8 sm:h-7 sm:w-7 items-center justify-center rounded-full text-white/70 transition hover:bg-white/15 hover:text-white disabled:opacity-25 cursor-pointer disabled:cursor-not-allowed touch-manipulation active:scale-90"
             >
-              <ChevronLeft className="h-3.5 w-3.5" />
+              <ChevronLeft className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
             </button>
             <button
               type="button"
               aria-label="Next project"
               disabled={activeProjectIndex >= projectsList.length - 1}
               onClick={() => onNavigateProject(Math.min(projectsList.length - 1, activeProjectIndex + 1))}
-              className="flex h-7 w-7 items-center justify-center rounded-full text-white/70 transition hover:bg-white/15 hover:text-white disabled:opacity-25 cursor-pointer disabled:cursor-not-allowed"
+              className="flex h-8 w-8 sm:h-7 sm:w-7 items-center justify-center rounded-full text-white/70 transition hover:bg-white/15 hover:text-white disabled:opacity-25 cursor-pointer disabled:cursor-not-allowed touch-manipulation active:scale-90"
             >
-              <ChevronRight className="h-3.5 w-3.5" />
+              <ChevronRight className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
             </button>
           </div>
 
@@ -50,7 +50,7 @@ export default function TunnelHUD({
           <button
             type="button"
             onClick={() => onSelectProject(project.id)}
-            className="group flex items-center gap-2 rounded-full border border-white/15 bg-[#0b0b0e]/90 px-3 py-1.5 text-left backdrop-blur-xl transition-all hover:border-cyan-400/50 hover:bg-white/[0.12] sm:gap-3.5 sm:px-4 sm:py-2 cursor-pointer shadow-lg"
+            className="group flex min-h-[38px] items-center gap-2 rounded-full border border-white/15 bg-[#0b0b0e]/90 px-3.5 py-1.5 text-left backdrop-blur-xl transition-all hover:border-cyan-400/50 hover:bg-white/[0.12] active:scale-95 sm:gap-3.5 sm:px-4 sm:py-2 cursor-pointer shadow-lg touch-manipulation"
           >
             <span
               style={{ color: project.accentColor || '#00F0FF' }}

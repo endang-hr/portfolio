@@ -58,7 +58,7 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
       >
         
         {/* Top Header Card with Rich Dizzo-Style Gradient */}
-        <div className="profile-gradient-header flex-shrink-0 p-5 sm:p-6 md:p-8">
+        <div className="profile-gradient-header flex-shrink-0 p-4 sm:p-6 md:p-8">
           {/* Ambient radial teal glow behind avatar */}
           <div className="pointer-events-none absolute -left-10 -top-10 h-64 w-64 rounded-full bg-cyan-500/25 blur-3xl" />
           <div className="pointer-events-none absolute left-1/4 -top-16 h-48 w-80 rounded-full bg-teal-500/15 blur-3xl" />
@@ -74,13 +74,13 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
               onClose();
             }}
             aria-label="Close modal"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 flex h-10 w-10 min-h-[40px] min-w-[40px] items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 hover:border-white/50 hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg touch-manipulation active:scale-90"
+            className="absolute top-3.5 right-3.5 sm:top-6 sm:right-6 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 hover:border-white/50 hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg touch-manipulation active:scale-90"
           >
             <X className="h-4 w-4" />
           </button>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-            <div className="flex items-center gap-4 sm:gap-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-5">
+            <div className="flex items-center gap-3.5 sm:gap-5 pr-8 sm:pr-0">
               {/* Profile Avatar with Cyan Glow */}
               <div className="about-avatar">
                 <img
@@ -95,25 +95,25 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
               </div>
 
               {/* Identity & Status */}
-              <div>
-                <div className="flex items-center gap-2.5">
-                  <h2 className="font-serif italic text-2xl sm:text-3xl text-white tracking-tight">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <h2 className="font-serif italic text-xl sm:text-3xl text-white tracking-tight truncate">
                     {portfolioProfile.name}
                   </h2>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-medium text-emerald-400">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[9px] sm:text-[10px] font-medium text-emerald-400 shrink-0">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Active
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-cyan-400 font-medium mt-1">
+                <p className="text-xs sm:text-sm text-cyan-400 font-medium mt-0.5 line-clamp-1">
                   {portfolioProfile.role}
                 </p>
-                <p className="text-[11px] sm:text-xs text-white/60 mt-1 max-w-xl leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-white/60 mt-0.5 max-w-xl leading-relaxed hidden sm:block">
                   {portfolioProfile.specialization}
                 </p>
 
-                {/* Social icons */}
-                <div className="flex items-center gap-2 mt-3">
+                {/* Social icons + Inline Contact button */}
+                <div className="flex flex-wrap items-center gap-2 mt-2.5">
                   <a
                     href={portfolioProfile.github}
                     target="_blank"
@@ -144,31 +144,44 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                   >
                     <Instagram className="h-3.5 w-3.5" />
                   </a>
+
+                  {/* Quick Contact Button directly beside social icons */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      onOpenContact();
+                    }}
+                    className="inline-flex sm:hidden items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black hover:bg-white/90 transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95 ml-1 touch-manipulation"
+                  >
+                    <Mail className="h-3 w-3" />
+                    <span>Contact</span>
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* Quick Contact Button */}
+            {/* Desktop Contact button */}
             <button
               type="button"
               onClick={() => {
                 onClose();
                 onOpenContact();
               }}
-              className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black hover:bg-white/90 transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-black hover:bg-white/90 transition-all cursor-pointer shadow-lg hover:scale-105 active:scale-95 shrink-0"
             >
               <Mail className="h-3.5 w-3.5" />
               <span>Contact</span>
             </button>
           </div>
 
-          {/* Tab Navigation Pill Bar */}
-          <div className="flex flex-wrap items-center gap-2 mt-6 pt-2 border-t border-white/5">
+          {/* Tab Navigation Pill Bar (Clean, Single Horizontal Row with Touch Scrolling) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 mt-4 pt-3 border-t border-white/10 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap -mx-1 px-1">
             {[
-              { id: 'biography', label: 'Biography', icon: Globe },
-              { id: 'experience', label: 'Experience & Education', icon: Briefcase },
-              { id: 'awards', label: `Awards & Certifications (${awardsList.length})`, icon: Award },
-              { id: 'skills', label: 'Tech Stack & Skills', icon: Code }
+              { id: 'biography', label: 'Biography', shortLabel: 'Biography', icon: Globe },
+              { id: 'experience', label: 'Experience & Education', shortLabel: 'Experience', icon: Briefcase },
+              { id: 'awards', label: `Awards & Certifications (${awardsList.length})`, shortLabel: `Awards (${awardsList.length})`, icon: Award },
+              { id: 'skills', label: 'Tech Stack & Skills', shortLabel: 'Skills', icon: Code }
             ].map(tab => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -177,14 +190,15 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium transition-all cursor-pointer ${
+                  className={`inline-flex shrink-0 items-center gap-1.5 sm:gap-2 rounded-full px-3 py-1.5 sm:px-3.5 text-xs font-medium transition-all cursor-pointer whitespace-nowrap touch-manipulation ${
                     isActive
                       ? 'bg-white text-black font-semibold shadow-md'
                       : 'border border-white/10 bg-white/5 text-white/70 hover:border-white/30 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <Icon className="h-3.5 w-3.5" />
-                  <span>{tab.label}</span>
+                  <Icon className="h-3.5 w-3.5 shrink-0" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.shortLabel}</span>
                 </button>
               );
             })}
@@ -193,7 +207,7 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
 
         {/* Scrollable Tab Content Body */}
         <div
-          className="flex-1 min-h-0 overflow-y-auto p-5 sm:p-6 md:p-8 custom-drawer-scroll space-y-6 overscroll-contain"
+          className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 md:p-8 custom-drawer-scroll space-y-5 sm:space-y-6 overscroll-contain"
           style={{
             flex: '1 1 0%',
             minHeight: 0,
@@ -206,31 +220,31 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
           
           {/* TAB 1: BIOGRAPHY */}
           {activeTab === 'biography' && (
-            <div className="space-y-6 animate-fadeIn">
+            <div className="space-y-5 sm:space-y-6 animate-fadeIn">
               {/* 3 Metrics Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-center">
-                  <span className="font-serif italic text-3xl sm:text-4xl text-white">2+</span>
-                  <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/45 mt-1">
-                    Years Designing &amp; Coding
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-2.5 sm:p-4 text-center">
+                  <span className="font-serif italic text-2xl sm:text-4xl text-white">2+</span>
+                  <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/45 mt-0.5 sm:mt-1">
+                    Years Exp
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-center">
-                  <span className="font-serif italic text-3xl sm:text-4xl text-cyan-400">{projectsList.length}</span>
-                  <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/45 mt-1">
-                    Flagship Works
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-2.5 sm:p-4 text-center">
+                  <span className="font-serif italic text-2xl sm:text-4xl text-cyan-400">{projectsList.length}</span>
+                  <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/45 mt-0.5 sm:mt-1">
+                    Projects
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-center">
-                  <span className="font-serif italic text-3xl sm:text-4xl text-amber-400">{awardsList.length}</span>
-                  <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/45 mt-1">
-                    Certifications &amp; Honors
+                <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-2.5 sm:p-4 text-center">
+                  <span className="font-serif italic text-2xl sm:text-4xl text-amber-400">{awardsList.length}</span>
+                  <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-wider text-white/45 mt-0.5 sm:mt-1">
+                    Honors
                   </p>
                 </div>
               </div>
 
               {/* Bio Paragraphs */}
-              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 space-y-4 text-xs sm:text-sm leading-relaxed text-white/75">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 sm:p-6 space-y-3 sm:space-y-4 text-xs sm:text-sm leading-relaxed text-white/75">
                 {aboutContent.paragraphs.map((p, idx) => (
                   <p key={idx}>{p}</p>
                 ))}

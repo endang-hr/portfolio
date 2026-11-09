@@ -175,8 +175,14 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
             </button>
           </div>
 
-          {/* Tab Navigation Segmented Bar (100% visible on all mobile screens, zero tabs cut off) */}
-          <div className="grid grid-cols-4 gap-1 p-1 rounded-2xl bg-white/[0.04] border border-white/10 mt-3.5 sm:mt-5">
+          {/* Tab Navigation Segmented Bar (100% visible on all mobile screens, zero tabs cut off, strictly 4 columns in 1 row) */}
+          <div
+            className="w-full grid grid-cols-4 gap-1 p-1 rounded-2xl bg-white/[0.05] border border-white/10 mt-3.5 sm:mt-5"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))'
+            }}
+          >
             {[
               { id: 'biography', label: 'Biography', mobileLabel: 'Bio', icon: Globe },
               { id: 'experience', label: 'Experience & Education', mobileLabel: 'Exp', icon: Briefcase },
@@ -190,14 +196,14 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`w-full flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl py-2 px-1 text-center transition-all cursor-pointer touch-manipulation select-none ${
+                  className={`w-full flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl py-2 px-1 text-center transition-all cursor-pointer touch-manipulation select-none whitespace-nowrap overflow-hidden ${
                     isActive
                       ? 'bg-white text-black font-semibold shadow-md'
                       : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                   aria-selected={isActive}
                 >
-                  <Icon className="h-3.5 w-3.5 shrink-0" />
+                  <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
                   <span className="text-[11px] sm:text-xs font-semibold hidden md:inline truncate">
                     {tab.label}
                   </span>

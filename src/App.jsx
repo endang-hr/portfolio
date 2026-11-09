@@ -72,6 +72,11 @@ export default function App() {
   }, [isAboutModalOpen, isContactModalOpen, selectedProjectId]);
 
   // Direct Touch & Pointer Drag controller for mobile / iPhone and iOS Simulator
+  const progressRef = useRef(0);
+  useEffect(() => {
+    progressRef.current = scrollProgress;
+  }, [scrollProgress]);
+
   useEffect(() => {
     let startY = 0;
     let lastY = 0;
@@ -82,11 +87,10 @@ export default function App() {
 
     const isModalActive = () => Boolean(isAboutModalOpen || isContactModalOpen || selectedProjectId);
 
-    const onTouchStart = (e) => {
+    const handleDragStart = (clientY) => {
       if (isModalActive()) return;
-      const touch = e.touches ? e.touches[0] : e;
-      startY = touch.clientY;
-      lastY = touch.clientY;
+      startY = clientY;
+      lastY = clientY;
       lastTime = performance.now();
       isDragging = true;
       velocityY = 0;
@@ -96,48 +100,109 @@ export default function App() {
       }
     };
 
-    const onTouchMove = (e) => {
+    const handleDragMove = (clientY, cancelableEvent) => {
       if (!isDragging || isModalActive()) return;
-      const touch = e.touches ? e.touches[0] : e;
-      const currentY = touch.clientY;
-      const deltaY = lastY - currentY;
+      const deltaY = lastY - clientY;
       const now = performance.now();
       const dt = Math.max(1, now - lastTime);
 
       velocityY = deltaY / dt;
-      lastY = currentY;
+      lastY = clientY;
       lastTime = now;
 
-      if (Math.abs(currentY - startY) > 5 && lenisRef.current) {
-        if (e.cancelable) e.preventDefault();
+      // Sensitivity: ~4.5x screen height traverses the entire 0 -> 1 tunnel progress
+      const scrollDomain = Math.max(1, window.innerHeight * 4.5);
+      const progressDelta = deltaY / scrollDomain;
+
+      const nextSp = Math.min(1, Math.max(0, progressRef.current + progressDelta));
+      progressRef.current = nextSp;
+      setScrollProgress(nextSp);
+
+      if (cancelableEvent && cancelableEvent.cancelable) {
+        cancelableEvent.preventDefault();
+      }
+
+      if (lenisRef.current) {
         const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        const nextScroll = Math.min(maxScroll, Math.max(0, lenisRef.current.scroll + deltaY * 2.8));
-        lenisRef.current.scrollTo(nextScroll, { immediate: true });
+        lenisRef.current.scroll = nextSp * maxScroll;
       }
     };
 
-    const onTouchEnd = () => {
+    const handleDragEnd = () => {
       if (!isDragging || isModalActive()) {
         isDragging = false;
         return;
       }
       isDragging = false;
 
-      // Inertia on release
-      if (Math.abs(velocityY) > 0.12 && lenisRef.current) {
-        let currentV = velocityY * 20;
+      // Smooth inertia glide on release
+      if (Math.abs(velocityY) > 0.08) {
+        const scrollDomain = Math.max(1, window.innerHeight * 4.5);
+        let velocityProgress = (velocityY * 16) / scrollDomain;
+
         const decay = () => {
           if (isModalActive()) return;
-          if (Math.abs(currentV) < 0.6) return;
+          if (Math.abs(velocityProgress) < 0.0001) return;
+
+          const nextSp = Math.min(1, Math.max(0, progressRef.current + velocityProgress));
+          progressRef.current = nextSp;
+          setScrollProgress(nextSp);
+
           if (lenisRef.current) {
             const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-            const nextScroll = Math.min(maxScroll, Math.max(0, lenisRef.current.scroll + currentV));
-            lenisRef.current.scrollTo(nextScroll, { immediate: true });
-            currentV *= 0.93;
-            momentumAnimId = requestAnimationFrame(decay);
+            lenisRef.current.scroll = nextSp * maxScroll;
           }
+
+          velocityProgress *= 0.92;
+          momentumAnimId = requestAnimationFrame(decay);
         };
         momentumAnimId = requestAnimationFrame(decay);
+      }
+    };
+
+    // Touch events for real iPhone and touch simulation
+    const onTouchStart = (e) => {
+      if (e.touches && e.touches.length === 1) {
+        handleDragStart(e.touches[0].clientY);
+      }
+    };
+    const onTouchMove = (e) => {
+      if (e.touches && e.touches.length === 1) {
+        handleDragMove(e.touches[0].clientY, e);
+      }
+    };
+    const onTouchEnd = () => {
+      handleDragEnd();
+    };
+
+    // Pointer / mouse drag for Simulator mouse drag & desktop testing
+    const onMouseDown = (e) => {
+      if (e.target.closest('button, a, input, textarea, [data-lenis-prevent]')) return;
+      handleDragStart(e.clientY);
+    };
+    const onMouseMove = (e) => {
+      if (isDragging) {
+        handleDragMove(e.clientY, e);
+      }
+    };
+    const onMouseUp = () => {
+      if (isDragging) {
+        handleDragEnd();
+      }
+    };
+
+    // Wheel event fallback (if user uses mouse wheel in simulator or desktop)
+    const onWheel = (e) => {
+      if (isModalActive()) return;
+      const deltaY = e.deltaY;
+      const scrollDomain = Math.max(1, window.innerHeight * 4.5);
+      const progressDelta = (deltaY * 1.1) / scrollDomain;
+      const nextSp = Math.min(1, Math.max(0, progressRef.current + progressDelta));
+      progressRef.current = nextSp;
+      setScrollProgress(nextSp);
+      if (lenisRef.current) {
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        lenisRef.current.scroll = nextSp * maxScroll;
       }
     };
 
@@ -146,21 +211,10 @@ export default function App() {
     window.addEventListener('touchend', onTouchEnd, { passive: true });
     window.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
-    // Pointer / mouse drag for Simulator clicks & desktop testing
-    const onMouseDown = (e) => {
-      if (e.target.closest('button, a, input, textarea, [data-lenis-prevent]')) return;
-      onTouchStart(e);
-    };
-    const onMouseMove = (e) => {
-      if (isDragging) onTouchMove(e);
-    };
-    const onMouseUp = () => {
-      if (isDragging) onTouchEnd();
-    };
-
     window.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('wheel', onWheel, { passive: true });
 
     return () => {
       if (momentumAnimId) cancelAnimationFrame(momentumAnimId);
@@ -171,6 +225,7 @@ export default function App() {
       window.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);
+      window.removeEventListener('wheel', onWheel);
     };
   }, [isAboutModalOpen, isContactModalOpen, selectedProjectId]);
 
@@ -179,6 +234,8 @@ export default function App() {
   };
 
   const handleScrollToHome = () => {
+    progressRef.current = 0;
+    setScrollProgress(0);
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { duration: 1.2 });
     }
@@ -186,14 +243,20 @@ export default function App() {
 
   const handleNavigateProject = (idx) => {
     setActiveProjectIndex(idx);
-    if (lenisRef.current && projectsList[idx]) {
-      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    if (projectsList[idx]) {
       const startCamZ = 9.5;
       const lastProject = projectsList[projectsList.length - 1];
       const endCamZ = lastProject ? (lastProject.zPosition - 14) : -65;
       const targetCamZ = projectsList[idx].zPosition + 6.35;
       const targetSp = Math.min(0.98, Math.max(0.05, (targetCamZ - startCamZ) / (endCamZ - startCamZ)));
-      lenisRef.current.scrollTo(maxScroll * targetSp, { duration: 1.3 });
+      
+      progressRef.current = targetSp;
+      setScrollProgress(targetSp);
+
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(maxScroll * targetSp, { duration: 1.2 });
+      }
     }
   };
 

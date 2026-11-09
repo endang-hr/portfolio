@@ -175,13 +175,13 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
             </button>
           </div>
 
-          {/* Tab Navigation Pill Bar (Clean, Single Horizontal Row with Touch Scrolling) */}
-          <div className="flex items-center gap-1.5 sm:gap-2 mt-4 pt-3 border-t border-white/10 overflow-x-auto no-scrollbar scroll-smooth flex-nowrap -mx-1 px-1">
+          {/* Tab Navigation Segmented Bar (100% visible on all mobile screens, zero tabs cut off) */}
+          <div className="grid grid-cols-4 gap-1 p-1 rounded-2xl bg-white/[0.04] border border-white/10 mt-3.5 sm:mt-5">
             {[
-              { id: 'biography', label: 'Biography', shortLabel: 'Biography', icon: Globe },
-              { id: 'experience', label: 'Experience & Education', shortLabel: 'Experience', icon: Briefcase },
-              { id: 'awards', label: `Awards & Certifications (${awardsList.length})`, shortLabel: `Awards (${awardsList.length})`, icon: Award },
-              { id: 'skills', label: 'Tech Stack & Skills', shortLabel: 'Skills', icon: Code }
+              { id: 'biography', label: 'Biography', mobileLabel: 'Bio', icon: Globe },
+              { id: 'experience', label: 'Experience & Education', mobileLabel: 'Exp', icon: Briefcase },
+              { id: 'awards', label: `Awards & Certifications (${awardsList.length})`, mobileLabel: 'Awards', count: awardsList.length, icon: Award },
+              { id: 'skills', label: 'Tech Stack & Skills', mobileLabel: 'Skills', icon: Code }
             ].map(tab => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -190,15 +190,27 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`inline-flex shrink-0 items-center gap-1.5 sm:gap-2 rounded-full px-3 py-1.5 sm:px-3.5 text-xs font-medium transition-all cursor-pointer whitespace-nowrap touch-manipulation ${
+                  className={`w-full flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl py-2 px-1 text-center transition-all cursor-pointer touch-manipulation select-none ${
                     isActive
                       ? 'bg-white text-black font-semibold shadow-md'
-                      : 'border border-white/10 bg-white/5 text-white/70 hover:border-white/30 hover:text-white hover:bg-white/10'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
+                  aria-selected={isActive}
                 >
                   <Icon className="h-3.5 w-3.5 shrink-0" />
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.shortLabel}</span>
+                  <span className="text-[11px] sm:text-xs font-semibold hidden md:inline truncate">
+                    {tab.label}
+                  </span>
+                  <span className="text-[11px] sm:text-xs font-semibold md:hidden truncate">
+                    {tab.mobileLabel}
+                  </span>
+                  {tab.count && (
+                    <span className={`text-[9px] font-mono px-1 py-0.2 rounded-full shrink-0 ${
+                      isActive ? 'bg-black/10 text-black font-bold' : 'bg-amber-400/20 text-amber-300'
+                    }`}>
+                      {tab.count}
+                    </span>
+                  )}
                 </button>
               );
             })}

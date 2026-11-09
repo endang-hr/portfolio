@@ -39,7 +39,14 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 animate-fadeIn" data-lenis-prevent="true">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 animate-fadeIn"
+      style={{
+        paddingTop: 'max(18px, env(safe-area-inset-top))',
+        paddingBottom: 'max(18px, env(safe-area-inset-bottom))'
+      }}
+      data-lenis-prevent="true"
+    >
       {/* Blurred Backdrop */}
       <div
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
@@ -58,7 +65,7 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
       >
         
         {/* Top Header Card with Rich Dizzo-Style Gradient */}
-        <div className="profile-gradient-header flex-shrink-0 p-4 sm:p-6 md:p-8">
+        <div className="profile-gradient-header flex-shrink-0 p-5 sm:p-6 md:p-8">
           {/* Ambient radial teal glow behind avatar */}
           <div className="pointer-events-none absolute -left-10 -top-10 h-64 w-64 rounded-full bg-cyan-500/25 blur-3xl" />
           <div className="pointer-events-none absolute left-1/4 -top-16 h-48 w-80 rounded-full bg-teal-500/15 blur-3xl" />
@@ -74,7 +81,7 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
               onClose();
             }}
             aria-label="Close modal"
-            className="absolute top-3.5 right-3.5 sm:top-6 sm:right-6 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 hover:border-white/50 hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg touch-manipulation active:scale-90"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/90 hover:border-white/50 hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg touch-manipulation active:scale-90"
           >
             <X className="h-4 w-4" />
           </button>
@@ -113,7 +120,10 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                 </p>
 
                 {/* Social icons + Inline Contact button */}
-                <div className="flex flex-wrap items-center gap-2 mt-2.5">
+                <div
+                  className="flex flex-wrap items-center gap-2"
+                  style={{ marginTop: '12px' }}
+                >
                   <a
                     href={portfolioProfile.github}
                     target="_blank"
@@ -177,10 +187,11 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
 
           {/* Tab Navigation Segmented Bar (100% visible on all mobile screens, zero tabs cut off, strictly 4 columns in 1 row) */}
           <div
-            className="w-full grid grid-cols-4 gap-1 p-1 rounded-2xl bg-white/[0.05] border border-white/10 mt-3.5 sm:mt-5"
+            className="w-full grid grid-cols-4 gap-1 p-1 rounded-2xl bg-white/[0.05] border border-white/10"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))'
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              marginTop: '22px'
             }}
           >
             {[

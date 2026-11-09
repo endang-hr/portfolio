@@ -380,7 +380,7 @@ export const projectsList = [
     accentColor: "#0284C7",
     secondaryColor: "#38BDF8",
     bgDark: "#04101A",
-    mediaUrl: "/images/tabunganku.png?v=1",
+    mediaUrl: "/images/tabunganku.png?v=2",
     tags: ["React", "Tailwind CSS", "Financial Dashboard", "Fintech UI"],
     summary: "Tabunganku adalah platform manajemen keuangan harian dan pemantauan tabungan pintar multi-rekening yang memudahkan pencatatan arus kas, alokasi tabungan, dan analitik saldo secara real-time.",
     challenge: "Mengembangkan pengalaman pengguna yang intuitif dan visual finansial modern untuk monitoring rekening bank, e-wallet, kalender aktivitas keuangan, serta riwayat transaksi harian yang aman dan transparan.",

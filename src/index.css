@@ -63,6 +63,25 @@ html, body {
 .mt-6 {
   margin-top: 1.5rem !important;
 }
+
+/* About Modal Tabs: Desktop Original Pills vs Mobile Segmented Grid */
+@media (min-width: 640px) {
+  .about-tabs-mobile {
+    display: none !important;
+  }
+  .about-tabs-desktop {
+    display: flex !important;
+  }
+}
+@media (max-width: 639px) {
+  .about-tabs-mobile {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .about-tabs-desktop {
+    display: none !important;
+  }
+}
 .max-h-\[90vh\] {
   max-height: 90vh !important;
 }

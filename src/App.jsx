@@ -71,6 +71,109 @@ export default function App() {
     }
   }, [isAboutModalOpen, isContactModalOpen, selectedProjectId]);
 
+  // Direct Touch & Pointer Drag controller for mobile / iPhone and iOS Simulator
+  useEffect(() => {
+    let startY = 0;
+    let lastY = 0;
+    let isDragging = false;
+    let velocityY = 0;
+    let lastTime = 0;
+    let momentumAnimId = null;
+
+    const isModalActive = () => Boolean(isAboutModalOpen || isContactModalOpen || selectedProjectId);
+
+    const onTouchStart = (e) => {
+      if (isModalActive()) return;
+      const touch = e.touches ? e.touches[0] : e;
+      startY = touch.clientY;
+      lastY = touch.clientY;
+      lastTime = performance.now();
+      isDragging = true;
+      velocityY = 0;
+      if (momentumAnimId) {
+        cancelAnimationFrame(momentumAnimId);
+        momentumAnimId = null;
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (!isDragging || isModalActive()) return;
+      const touch = e.touches ? e.touches[0] : e;
+      const currentY = touch.clientY;
+      const deltaY = lastY - currentY;
+      const now = performance.now();
+      const dt = Math.max(1, now - lastTime);
+
+      velocityY = deltaY / dt;
+      lastY = currentY;
+      lastTime = now;
+
+      if (Math.abs(currentY - startY) > 5 && lenisRef.current) {
+        if (e.cancelable) e.preventDefault();
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const nextScroll = Math.min(maxScroll, Math.max(0, lenisRef.current.scroll + deltaY * 2.8));
+        lenisRef.current.scrollTo(nextScroll, { immediate: true });
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (!isDragging || isModalActive()) {
+        isDragging = false;
+        return;
+      }
+      isDragging = false;
+
+      // Inertia on release
+      if (Math.abs(velocityY) > 0.12 && lenisRef.current) {
+        let currentV = velocityY * 20;
+        const decay = () => {
+          if (isModalActive()) return;
+          if (Math.abs(currentV) < 0.6) return;
+          if (lenisRef.current) {
+            const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            const nextScroll = Math.min(maxScroll, Math.max(0, lenisRef.current.scroll + currentV));
+            lenisRef.current.scrollTo(nextScroll, { immediate: true });
+            currentV *= 0.93;
+            momentumAnimId = requestAnimationFrame(decay);
+          }
+        };
+        momentumAnimId = requestAnimationFrame(decay);
+      }
+    };
+
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', onTouchEnd, { passive: true });
+
+    // Pointer / mouse drag for Simulator clicks & desktop testing
+    const onMouseDown = (e) => {
+      if (e.target.closest('button, a, input, textarea, [data-lenis-prevent]')) return;
+      onTouchStart(e);
+    };
+    const onMouseMove = (e) => {
+      if (isDragging) onTouchMove(e);
+    };
+    const onMouseUp = () => {
+      if (isDragging) onTouchEnd();
+    };
+
+    window.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    return () => {
+      if (momentumAnimId) cancelAnimationFrame(momentumAnimId);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
+      window.removeEventListener('touchcancel', onTouchEnd);
+      window.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+  }, [isAboutModalOpen, isContactModalOpen, selectedProjectId]);
+
   const handleExploreProjects = () => {
     handleNavigateProject(0);
   };

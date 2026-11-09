@@ -22,22 +22,29 @@ export default function App() {
   const lenisRef = useRef(null);
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
+    // Initialize Lenis smooth scroll with mobile touch synchronization
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1.0
+      wheelMultiplier: 1.0,
+      syncTouch: true,
+      syncTouchLerp: 0.08,
+      touchMultiplier: 1.75
     });
     lenisRef.current = lenis;
 
-    const onScroll = () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
+    const onScroll = (e) => {
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const scrollY = typeof e?.scroll === 'number' ? e.scroll : window.scrollY;
+      const progress = e?.progress !== undefined
+        ? Math.min(1, Math.max(0, e.progress))
+        : Math.min(1, Math.max(0, scrollY / maxScroll));
       setScrollProgress(progress);
     };
 
     lenis.on('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     function raf(time) {
       lenis.raf(time);
@@ -50,6 +57,7 @@ export default function App() {
 
     return () => {
       cancelAnimationFrame(animId);
+      window.removeEventListener('scroll', onScroll);
       lenis.destroy();
     };
   }, []);
@@ -87,7 +95,7 @@ export default function App() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-[#050505] text-white">
+    <main className="relative min-h-screen w-full bg-[#050505] text-white touch-pan-y" style={{ touchAction: 'pan-y' }}>
       {/* Intro Loading Screen */}
       <IntroLoader isLoaded={isLoaded} progress={85} />
 

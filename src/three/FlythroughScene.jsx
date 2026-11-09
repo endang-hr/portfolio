@@ -270,6 +270,7 @@ export default function FlythroughScene({
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.domElement.style.touchAction = 'pan-y';
     container.appendChild(renderer.domElement);
 
     // 2. Atlas Texture
@@ -651,5 +652,5 @@ export default function FlythroughScene({
     };
   }, []);
 
-  return <div ref={mountRef} className="fixed inset-0 pointer-events-auto z-0" />;
+  return <div ref={mountRef} className="fixed inset-0 pointer-events-auto z-0 touch-pan-y" style={{ touchAction: 'pan-y' }} />;
 }

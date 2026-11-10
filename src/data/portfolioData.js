@@ -6,7 +6,7 @@ export const portfolioProfile = {
   location: "Indonesia",
   availability: "Available for Projects & Collaborations",
   bioSnippet: "IT Infrastructure Support & Mahasiswa Sistem Informasi yang berfokus pada pengembangan web, mobile, dan desain UI/UX untuk menciptakan solusi digital yang andal, efisien, dan modern.",
-  email: "muhamadendang@gmail.com",
+  email: "mhdendangit@gmail.com",
   github: "https://github.com/endang-hr",
   linkedin: "https://www.linkedin.com/in/muhamad-endang/",
   instagram: "https://www.instagram.com/endang.mhd?obrf=cmlhMzdmY2R3aGMy&utm_source=qr",

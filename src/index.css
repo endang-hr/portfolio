@@ -72,6 +72,12 @@ html, body {
   .about-tabs-desktop {
     display: flex !important;
   }
+  .sm\:hidden {
+    display: none !important;
+  }
+  .sm\:inline-flex {
+    display: inline-flex !important;
+  }
 }
 @media (max-width: 639px) {
   .about-tabs-mobile {

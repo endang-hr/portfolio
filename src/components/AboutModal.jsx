@@ -13,6 +13,7 @@ import {
   Sparkles,
   Layers
 } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import {
   portfolioProfile,
   aboutContent,
@@ -121,39 +122,27 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
 
                 {/* Social icons + Inline Contact button */}
                 <div
-                  className="flex flex-wrap items-center gap-2"
+                  className="flex flex-wrap items-center gap-1.5 sm:gap-2"
                   style={{ marginTop: '12px' }}
                 >
-                  <a
-                    href={portfolioProfile.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="GitHub Profile"
-                    title="GitHub"
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:border-white/40 hover:text-white hover:bg-white/10 transition-colors"
-                  >
-                    <Github className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href={portfolioProfile.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="LinkedIn Profile"
-                    title="LinkedIn"
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:border-white/40 hover:text-white hover:bg-white/10 transition-colors"
-                  >
-                    <Linkedin className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href={portfolioProfile.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Instagram Profile"
-                    title="Instagram"
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:border-white/40 hover:text-white hover:bg-white/10 transition-colors"
-                  >
-                    <Instagram className="h-3.5 w-3.5" />
-                  </a>
+                  {[
+                    { href: portfolioProfile.github, label: 'GitHub Profile', title: 'GitHub', Icon: Github },
+                    { href: portfolioProfile.linkedin, label: 'LinkedIn Profile', title: 'LinkedIn', Icon: Linkedin },
+                    { href: portfolioProfile.instagram, label: 'Instagram Profile', title: 'Instagram', Icon: Instagram },
+                    { href: portfolioProfile.whatsapp, label: 'Chat WhatsApp', title: 'WhatsApp (085210738522)', Icon: WhatsAppIcon }
+                  ].map(({ href, label, title, Icon }) => (
+                    <a
+                      key={title}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={label}
+                      title={title}
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:border-white/40 hover:text-white hover:bg-white/10 transition-colors"
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                    </a>
+                  ))}
 
                   {/* Quick Contact Button directly beside social icons */}
                   <button
@@ -162,7 +151,7 @@ export default function AboutModal({ isOpen, onClose, onOpenContact }) {
                       onClose();
                       onOpenContact();
                     }}
-                    className="inline-flex sm:hidden items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black hover:bg-white/90 transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95 ml-1 touch-manipulation"
+                    className="inline-flex sm:hidden shrink-0 items-center gap-1.5 rounded-full bg-white px-2.5 sm:px-3 py-1 text-xs font-semibold text-black hover:bg-white/90 transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95 touch-manipulation"
                   >
                     <Mail className="h-3 w-3" />
                     <span>Contact</span>

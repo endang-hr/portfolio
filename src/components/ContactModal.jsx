@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Mail, Check, Github, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
 import { portfolioProfile } from '../data/portfolioData';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function ContactModal({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
@@ -90,34 +91,24 @@ export default function ContactModal({ isOpen, onClose }) {
           </div>
 
           {/* Social Links Row */}
-          <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-3 gap-2">
-            <a
-              href={portfolioProfile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2.5 text-xs font-medium text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white transition-all"
-            >
-              <Linkedin className="h-3.5 w-3.5 text-cyan-400" />
-              <span>LinkedIn</span>
-            </a>
-            <a
-              href={portfolioProfile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2.5 text-xs font-medium text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white transition-all"
-            >
-              <Github className="h-3.5 w-3.5" />
-              <span>GitHub</span>
-            </a>
-            <a
-              href={portfolioProfile.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2.5 text-xs font-medium text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white transition-all"
-            >
-              <Instagram className="h-3.5 w-3.5 text-pink-400" />
-              <span>Instagram</span>
-            </a>
+          <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-2">
+            {[
+              { href: portfolioProfile.linkedin, label: 'LinkedIn', Icon: Linkedin, iconClass: 'h-3.5 w-3.5 text-cyan-400' },
+              { href: portfolioProfile.github, label: 'GitHub', Icon: Github, iconClass: 'h-3.5 w-3.5' },
+              { href: portfolioProfile.instagram, label: 'Instagram', Icon: Instagram, iconClass: 'h-3.5 w-3.5 text-pink-400' },
+              { href: portfolioProfile.whatsapp, label: 'WhatsApp', Icon: WhatsAppIcon, iconClass: 'h-3.5 w-3.5 text-emerald-400' }
+            ].map(({ href, label, Icon, iconClass }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-2.5 text-xs font-medium text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white transition-all"
+              >
+                <Icon className={iconClass} />
+                <span>{label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

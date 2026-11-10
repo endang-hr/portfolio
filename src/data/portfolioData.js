@@ -10,6 +10,7 @@ export const portfolioProfile = {
   github: "https://github.com/endang-hr",
   linkedin: "https://www.linkedin.com/in/muhamad-endang/",
   instagram: "https://www.instagram.com/endang.mhd?obrf=cmlhMzdmY2R3aGMy&utm_source=qr",
+  whatsapp: "https://wa.me/6285210738522",
   profileImage: "/images/profile.webp?v=1",
   totalWorks: 8
 };

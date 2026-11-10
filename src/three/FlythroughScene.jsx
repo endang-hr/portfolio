@@ -110,6 +110,7 @@ const PARTICLE_FRAGMENT_SHADER = `
   uniform float uCameraZ;
   uniform float uDimFactor;
   uniform float uIntro;
+  uniform float uThemeLight;
 
   varying vec2 vUv;
   varying float vLuminance;
@@ -138,24 +139,28 @@ const PARTICLE_FRAGMENT_SHADER = `
 
     vec4 texColor = texture2D(uAtlas, atlasUv);
 
-    // Portrait mode: Crisp Black & White editorial portrait so facial features are brilliantly clear
+    // Portrait mode: Luminous silver-on-black in dark mode, crisp graphite positive ink on white in light mode
     float texLuma = dot(texColor.rgb, vec3(0.299, 0.587, 0.114));
-    vec3 bwShade = vec3(1.15 * vLuminance * (0.52 + 0.52 * texLuma));
+    vec3 bwDark = vec3(1.15 * vLuminance * (0.52 + 0.52 * texLuma));
+    vec3 bwLight = vec3(0.08 + 0.56 * vLuminance * (0.45 + 0.55 * texLuma));
+    vec3 bwShade = mix(bwDark, bwLight, uThemeLight);
 
     // Tunnel mode: Vibrant micro-card artwork
-    vec3 tunnelShade = texColor.rgb * 1.15 + vec3(0.04);
+    vec3 tunnelShade = texColor.rgb * mix(1.15, 0.98, uThemeLight) + vec3(mix(0.04, 0.0, uThemeLight));
 
     vec3 cardColor = mix(bwShade, tunnelShade, smoothstep(0.06, 0.62, vMorph));
 
     // Subtle glass rim highlight on card edge
     float borderMask = smoothstep(-0.045, -0.005, sdf);
-    cardColor += vec3(0.22) * borderMask * (0.35 + 0.65 * vMorph);
+    cardColor = clamp(cardColor + mix(vec3(0.22), vec3(-0.08), uThemeLight) * borderMask * (0.35 + 0.65 * vMorph), 0.0, 1.0);
 
     // Distance fog fade
     float distToCam = abs(uCameraZ - vWorldZ);
     float fogFactor = exp(-pow(max(0.0, distToCam - 11.0) * 0.024, 1.55));
-    vec3 fogColor = vec3(0.0196, 0.0196, 0.0196);
-    vec3 finalRgb = mix(fogColor, cardColor * uDimFactor, fogFactor);
+    vec3 fogColor = mix(vec3(0.0196, 0.0196, 0.0196), vec3(0.9686, 0.9686, 0.9765), uThemeLight);
+    vec3 dimTarget = mix(vec3(0.0), fogColor, uThemeLight);
+    vec3 dimmedCard = mix(dimTarget, cardColor, uDimFactor);
+    vec3 finalRgb = mix(fogColor, dimmedCard, fogFactor);
 
     // Smooth alpha fade as particles pass close to camera
     float frontDelta = uCameraZ - vWorldZ;
@@ -187,6 +192,7 @@ const CARD_FRAGMENT_SHADER = `
   uniform float uSelected;
   uniform vec3 uAccent;
   uniform float uTime;
+  uniform float uThemeLight;
 
   varying vec2 vUv;
 
@@ -212,7 +218,8 @@ const CARD_FRAGMENT_SHADER = `
 
     // Accent luminous rim border
     float edgeMask = smoothstep(-0.02, -0.001, sdf);
-    vec3 borderCol = mix(vec3(0.45), uAccent, max(uHover * 0.85, uSelected));
+    vec3 idleBorder = mix(vec3(0.45), vec3(0.28), uThemeLight);
+    vec3 borderCol = mix(idleBorder, uAccent, max(uHover * 0.85, uSelected));
     col = mix(col, borderCol, edgeMask * (0.55 + 0.45 * max(uHover, uSelected)));
 
     // Pure 1:1 color fidelity matching original uploaded graphic
@@ -228,13 +235,15 @@ export default function FlythroughScene({
   hoveredProjectId,
   setHoveredProjectId,
   onActiveProjectChange,
-  onLoaded
+  onLoaded,
+  theme = 'dark'
 }) {
   const mountRef = useRef(null);
   const stateRef = useRef({
     scrollProgress: 0,
     selectedProjectId: null,
     hoveredProjectId: null,
+    targetThemeLight: theme === 'light' ? 1 : 0,
     introProgress: 0,
     pointer: new THREE.Vector2(0, 0),
     mouseWorld: new THREE.Vector2(99, 99)
@@ -245,7 +254,8 @@ export default function FlythroughScene({
     stateRef.current.scrollProgress = scrollProgress;
     stateRef.current.selectedProjectId = selectedProjectId;
     stateRef.current.hoveredProjectId = hoveredProjectId;
-  }, [scrollProgress, selectedProjectId, hoveredProjectId]);
+    stateRef.current.targetThemeLight = theme === 'light' ? 1 : 0;
+  }, [scrollProgress, selectedProjectId, hoveredProjectId, theme]);
 
   useEffect(() => {
     const container = mountRef.current;
@@ -254,10 +264,14 @@ export default function FlythroughScene({
     let width = container.clientWidth || window.innerWidth;
     let height = container.clientHeight || window.innerHeight;
 
+    const darkBgColor = new THREE.Color('#050505');
+    const lightBgColor = new THREE.Color('#F7F7F9');
+    let smoothThemeLight = stateRef.current.targetThemeLight;
+
     // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#050505');
-    scene.fog = new THREE.FogExp2('#050505', 0.018);
+    scene.background = darkBgColor.clone().lerp(lightBgColor, smoothThemeLight);
+    scene.fog = new THREE.FogExp2(scene.background.getHex(), 0.018);
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
     camera.position.set(0, 0, 9.5);
@@ -309,6 +323,7 @@ export default function FlythroughScene({
         uMouseWorld: { value: new THREE.Vector2(99, 99) },
         uCameraZ: { value: 9.5 },
         uDimFactor: { value: 1 },
+        uThemeLight: { value: smoothThemeLight },
         uAtlas: { value: atlasTex }
       },
       transparent: true,
@@ -359,7 +374,8 @@ export default function FlythroughScene({
           uHover: { value: 0 },
           uSelected: { value: 0 },
           uAccent: { value: new THREE.Color(project.accentColor) },
-          uTime: { value: 0 }
+          uTime: { value: 0 },
+          uThemeLight: { value: smoothThemeLight }
         },
         transparent: true,
         depthWrite: false
@@ -487,6 +503,11 @@ export default function FlythroughScene({
       const delta = Math.min(clock.getDelta(), 0.05);
       const elapsedTime = clock.getElapsedTime();
 
+      // Smoothly interpolate scene background and fog between Dark (#050505) and Light (#F7F7F9)
+      smoothThemeLight = THREE.MathUtils.lerp(smoothThemeLight, stateRef.current.targetThemeLight, 1 - Math.exp(-8 * delta));
+      scene.background.copy(darkBgColor).lerp(lightBgColor, smoothThemeLight);
+      scene.fog.color.copy(scene.background);
+
       // Intro progress lerp to 1
       stateRef.current.introProgress = Math.min(1, stateRef.current.introProgress + 0.65 * delta);
 
@@ -549,6 +570,7 @@ export default function FlythroughScene({
       particleMat.uniforms.uIntro.value = stateRef.current.introProgress;
       particleMat.uniforms.uCameraZ.value = camera.position.z;
       particleMat.uniforms.uDimFactor.value = selId ? 0.35 : 1;
+      particleMat.uniforms.uThemeLight.value = smoothThemeLight;
       particleMat.uniforms.uMouseWorld.value.lerp(stateRef.current.mouseWorld, 1 - Math.exp(-10 * delta));
 
       // Update Signature group
@@ -558,7 +580,8 @@ export default function FlythroughScene({
         sp,
         camera.position.z,
         Boolean(selId),
-        stateRef.current.pointer
+        stateRef.current.pointer,
+        smoothThemeLight
       );
 
       // Update project cards
@@ -620,6 +643,7 @@ export default function FlythroughScene({
         mat.uniforms.uHover.value = u.currentHover;
         mat.uniforms.uSelected.value = u.currentSelected;
         mat.uniforms.uTime.value = elapsedTime;
+        mat.uniforms.uThemeLight.value = smoothThemeLight;
       });
 
       renderer.render(scene, camera);

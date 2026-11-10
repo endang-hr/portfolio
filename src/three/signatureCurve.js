@@ -105,9 +105,14 @@ export function createSignatureGroup() {
   planeMesh.frustumCulled = false;
   group.add(planeMesh);
 
+  const darkCore = new THREE.Color('#FFFFFF');
+  const lightCore = new THREE.Color('#111115');
+  const darkGlow = new THREE.Color('#38BDF8');
+  const lightGlow = new THREE.Color('#0284C7');
+
   return {
     group,
-    update: (time, introProgress, scrollProgress, cameraZ, isProjectSelected, pointer) => {
+    update: (time, introProgress, scrollProgress, cameraZ, isProjectSelected, pointer, themeLight = 0) => {
       // 3D Parallax tilt tracking mouse
       const targetRotY = pointer.x * 0.055;
       const targetRotX = -pointer.y * 0.038;
@@ -123,7 +128,9 @@ export function createSignatureGroup() {
       planeMat.uniforms.uDraw.value = Math.min(1.05, introProgress * 1.08);
       planeMat.uniforms.uDisperse.value = disperse;
       planeMat.uniforms.uCameraZ.value = cameraZ;
-      planeMat.uniforms.uOpacity.value = 0.72 * fadeOut * dimFactor;
+      planeMat.uniforms.uOpacity.value = (0.72 + 0.14 * themeLight) * fadeOut * dimFactor;
+      planeMat.uniforms.uColorCore.value.copy(darkCore).lerp(lightCore, themeLight);
+      planeMat.uniforms.uColorGlow.value.copy(darkGlow).lerp(lightGlow, themeLight);
       planeMesh.visible = fadeOut > 0.005;
     }
   };

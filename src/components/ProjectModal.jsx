@@ -105,7 +105,7 @@ export default function ProjectModal({
         aria-hidden={!isOpen}
       >
         {/* Top Header Bar with Safe Area padding & dedicated iOS touch targets */}
-        <div className="project-drawer-header sticky top-0 z-30 flex items-center justify-between border-b border-white/10 bg-[#070709]/95 backdrop-blur-2xl px-5 sm:px-7">
+        <div className="project-drawer-header sticky top-0 z-30 flex items-center justify-between border-b border-white/10 px-5 sm:px-7">
           {/* Close button with Chevron - minimum 44px hit target for iOS HIG */}
           <button
             type="button"
@@ -224,7 +224,7 @@ export default function ProjectModal({
               {project.metrics.map((m, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center py-1">
                   <span
-                    className="font-serif italic text-xl sm:text-2xl font-bold tracking-tight"
+                    className="project-metric-value font-serif italic text-xl sm:text-2xl font-bold tracking-tight"
                     style={{ color: project.accentColor || '#38BDF8' }}
                   >
                     {m.value}
@@ -302,7 +302,7 @@ export default function ProjectModal({
             {/* Tab Content: Project Visual */}
             {activeTab === 'visual' && project.mediaUrl && (
               <div className="space-y-3 animate-fadeIn">
-                <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_0_40px_rgba(0,0,0,0.6)] bg-[#07070a] group">
+                <div className="project-visual-frame relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_0_40px_rgba(0,0,0,0.6)] bg-[#07070a] group">
                   <div
                     className="max-h-[50vh] overflow-y-auto custom-drawer-scroll overscroll-contain"
                     data-lenis-prevent="true"
@@ -316,7 +316,7 @@ export default function ProjectModal({
                       decoding="sync"
                     />
                   </div>
-                  <div className="absolute bottom-2.5 right-2.5 pointer-events-none flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur-md px-2.5 py-1 text-[10px] font-medium text-white/75 border border-white/15 shadow-lg">
+                  <div className="photo-overlay-badge absolute bottom-2.5 right-2.5 pointer-events-none flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur-md px-2.5 py-1 text-[10px] font-medium text-white/75 border border-white/15 shadow-lg">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                     <span>Scroll gambar untuk melihat tampilan penuh</span>
                   </div>
@@ -388,7 +388,7 @@ export default function ProjectModal({
                 </div>
 
                 {/* Screenshot of Telegram Web */}
-                <div className="relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_0_40px_rgba(0,0,0,0.6)] bg-[#07070a] group">
+                <div className="project-visual-frame relative rounded-2xl overflow-hidden border border-white/15 shadow-[0_0_40px_rgba(0,0,0,0.6)] bg-[#07070a] group">
                   <div
                     className="max-h-[52vh] overflow-y-auto custom-drawer-scroll overscroll-contain"
                     data-lenis-prevent="true"
@@ -401,7 +401,7 @@ export default function ProjectModal({
                       className="w-full h-auto block select-none"
                     />
                   </div>
-                  <div className="absolute bottom-2.5 right-2.5 pointer-events-none flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur-md px-2.5 py-1 text-[10px] font-medium text-white/80 border border-white/15 shadow-lg">
+                  <div className="photo-overlay-badge absolute bottom-2.5 right-2.5 pointer-events-none flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur-md px-2.5 py-1 text-[10px] font-medium text-white/80 border border-white/15 shadow-lg">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
                     <span>Scroll untuk melihat pesan rekap bot Telegram</span>
                   </div>

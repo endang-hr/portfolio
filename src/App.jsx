@@ -18,6 +18,29 @@ export default function App() {
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem('portfolio-theme');
+      return saved === 'light' || saved === 'dark' ? saved : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    root.style.colorScheme = theme;
+    try {
+      window.localStorage.setItem('portfolio-theme', theme);
+    } catch {
+      // Ignore storage write restriction
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   const lenisRef = useRef(null);
 
@@ -261,9 +284,16 @@ export default function App() {
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-[#050505] text-white touch-pan-y" style={{ touchAction: 'pan-y' }}>
+    <main
+      className="relative min-h-screen w-full touch-pan-y transition-colors duration-300"
+      style={{
+        touchAction: 'pan-y',
+        backgroundColor: theme === 'light' ? '#F7F7F9' : '#050505',
+        color: theme === 'light' ? '#0f1014' : '#ffffff'
+      }}
+    >
       {/* Intro Loading Screen */}
-      <IntroLoader isLoaded={isLoaded} progress={85} />
+      <IntroLoader isLoaded={isLoaded} progress={85} theme={theme} />
 
       {/* 3D WebGL Flythrough Canvas */}
       <FlythroughScene
@@ -274,6 +304,7 @@ export default function App() {
         setHoveredProjectId={setHoveredProjectId}
         onActiveProjectChange={setActiveProjectIndex}
         onLoaded={() => setIsLoaded(true)}
+        theme={theme}
       />
 
       {/* Persistent Navigation Header */}
@@ -281,6 +312,8 @@ export default function App() {
         onOpenAbout={() => setIsAboutModalOpen(true)}
         onOpenContact={() => setIsContactModalOpen(true)}
         onScrollToHome={handleScrollToHome}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Hero Bottom Overlay */}
@@ -288,6 +321,7 @@ export default function App() {
         scrollProgress={scrollProgress}
         onExploreProjects={handleExploreProjects}
         onOpenAbout={() => setIsAboutModalOpen(true)}
+        theme={theme}
       />
 
       {/* Tunnel Bottom HUD (as seen in friend's design) */}
@@ -305,6 +339,7 @@ export default function App() {
           setSelectedProjectId(null);
           handleScrollToHome();
         }}
+        theme={theme}
       />
 
       {/* Floating Interactive Modals */}
